@@ -4,10 +4,75 @@
  */
 package poo.bnbaye;
 
+import java.io.Serializable;
+
 /**
- *
+ *clase usuario que contiene los atributos que comparten todos los usuarios de la app, tanto clientes como administradores
+ * con ADMIN_CORREO y ADMIN_CLAVE llevamos a cabo el inicio de sesión de los administradores, corroborando que tiene ese correo y clave 
  * @author Alejandro
  */
-public class Usuario {
+
+public class Usuario implements Serializable {
+    
+    public String correo;
+    public String clave;
+    
+    
+    public static final String ADMIN_CORREO = "admin@javabnb.com";
+    public static final String ADMIN_CLAVE = "admin";
+    
+
+    
+    /**
+     *
+     * @param correo
+     * @param clave
+     */
+    public Usuario(String correo, String clave) {
+        this.correo = correo;
+        this.clave = clave;
+    }
+    
+    public Usuario(){
+        
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    
+    
+    
+    /**
+     *
+     * @return
+     */
+    public boolean esAdministrador(){
+        return ADMIN_CORREO.equals(this.correo) && ADMIN_CLAVE.equals(this.clave);
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public String toString() {
+        return this.correo + " - " + this.clave;
+    }
+    
     
 }
+

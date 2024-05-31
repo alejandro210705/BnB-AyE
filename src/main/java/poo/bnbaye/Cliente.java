@@ -4,10 +4,99 @@
  */
 package poo.bnbaye;
 
+import java.io.Serializable;
+
 /**
- *
+ *Clase compuesta por los atributos comunes de los clientes, que luego se diferenciaran en Clientes particulares y Anfitriones
+ * Hereda de la clase Usuario el correo y la clave 
  * @author Alejandro
  */
-public class Cliente {
+public class Cliente extends Usuario implements Serializable {
+    
+    public String dni;
+    public String nombre;
+    public long tlf;
+
+    
+    //constructor 
+
+    public Cliente(String dni, String nombre, long tlf, String correo, String clave) {
+        super(correo, clave);
+        this.dni = dni;
+        this.nombre = nombre;
+        this.tlf = tlf;
+    }
+    
+    public Cliente () {
+        
+    }
+
+    /**
+     * Get the value of tlf
+     *
+     * @return the value of tlf
+     */
+    public long getTlf() {
+        return tlf;
+    }
+
+    /**
+     * Set the value of tlf
+     *
+     * @param tlf new value of tlf
+     */
+    public void setTlf(long tlf) {
+        this.tlf = tlf;
+    }
+
+
+    /**
+     * Get the value of nombre
+     *
+     * @return the value of nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Set the value of nombre
+     *
+     * @param nombre new value of nombre
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     * Get the value of dni
+     *
+     * @return the value of dni
+     */
+    public String getDni() {
+        return dni;
+    }
+
+    /**
+     * Set the value of dni
+     *
+     * @param dni new value of dni
+     */
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+  
+        
+    
+    /**
+     *
+     * @return
+     */
+    @Override
+    public String toString() {
+        return this.dni + " - " + this.nombre + " - " + this.tlf + " - " + this.correo + " - " + this.clave; 
+        
+    }
     
 }
