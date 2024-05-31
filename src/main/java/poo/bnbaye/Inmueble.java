@@ -10,4 +10,5 @@ package poo.bnbaye;
  */
 public class Inmueble {
     
+    
 }
