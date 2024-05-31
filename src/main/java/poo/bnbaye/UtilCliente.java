@@ -14,6 +14,7 @@ import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -87,7 +88,7 @@ public class UtilCliente implements Serializable {
      * @param fcT
      * @param vip
      * @return boolean */
-    public static boolean modificaParticular(Particular parti, String dni, String nombre, long tlf, String correo, String clave, String nomT, String numT, LocalDate fcT, Boolean vip) {
+    public static boolean modificaParticular(Particular parti, String dni, String nombre, String tlf, String correo, String clave, String nomT, String numT, LocalDate fcT, Boolean vip) {
         if (parti == null || !particulares.contains(parti)) {
             return false;
         }
@@ -101,7 +102,7 @@ public class UtilCliente implements Serializable {
                 parti.setNombre(nombre);
                 return true;
             }
-            if (parti.getTlf() != tlf) {
+            if (!parti.getTlf().equals(tlf)) {
                 parti.setTlf(tlf);
                 return true;
             }
@@ -250,7 +251,7 @@ public class UtilCliente implements Serializable {
                 
                 //guardamos el array de personas
                 oosParti.writeObject(particulares);
-                ostreamParti.close();
+                
                 }
                 
                 
@@ -266,7 +267,7 @@ public class UtilCliente implements Serializable {
     }//fin guardarDatos
     
     
-     /** 
+    /** 
       * Carga el arraylist particular desde el fichero copiasegParti.dat
       */
     public static void cargarDatosParti() {
@@ -276,7 +277,7 @@ public class UtilCliente implements Serializable {
             //Lectura de los objetos de tipo persona
             
             particulares = (ArrayList) oisParti.readObject();
-            istreamParti.close();
+            
             
         } catch (IOException ioe) {
             System.out.println("Error de IO: " + ioe.getMessage());
@@ -293,8 +294,8 @@ public class UtilCliente implements Serializable {
     
     
     //Segundo comenzamos con los metodos de los anfitriones
-    public static ArrayList<Anfitrion> anfitriones = new ArrayList<>();
-    public static Anfitrion objanfi;
+    private static ArrayList<Anfitrion> anfitriones = new ArrayList<>();
+    private static Anfitrion objanfi;
     
     /** Establece el ArrayList de anfitriones
     * @param p */
@@ -307,7 +308,7 @@ public class UtilCliente implements Serializable {
      * @param objanfi
      * @return  boolean */
     public static boolean altaAnfitriones(Anfitrion objanfi) {
-        if (!anfitriones.contains(objanfi)) {
+        if (!consultaAnfitrionesPorCorreo(objanfi.getCorreo())|| !consultaAnfitrionesPorDni(objanfi.getDni())) {
             anfitriones.add(objanfi);
             return true;
         } else {
@@ -320,18 +321,6 @@ public class UtilCliente implements Serializable {
         
     /**@return Devuelve el ArrayList de anfitriones */
     public static ArrayList<Anfitrion> getAnfitriones() {
-        //Comparador para ordenar a los anfitriones por su correo
-        Comparator CorreoAnfiComp = new Comparator() {
-            
-            @Override
-            public int compare(Object o1, Object o2) {
-                Anfitrion a1 = (Anfitrion) o1;
-                Anfitrion a2 = (Anfitrion) o2;
-                return a1.getCorreo().compareTo(a2.getCorreo());
-            }
-        };
-        //Ordenamos el array
-        Collections.sort(anfitriones, CorreoAnfiComp);
         return anfitriones;
     }
     
@@ -354,7 +343,7 @@ public class UtilCliente implements Serializable {
      * @param fr
      * @param calificacion
      * @return boolean */
-    public static boolean modificaAnfitriones(Anfitrion anfi, String dni, String nombre, long tlf, String correo, String clave, LocalDate fr, int calificacion) {
+    public static boolean modificaAnfitriones(Anfitrion anfi, String dni, String nombre, String tlf, String correo, String clave, LocalDateTime fr, int calificacion) {
         if (anfi == null || !anfitriones.contains(anfi)) {
             return false;
         }
@@ -368,7 +357,7 @@ public class UtilCliente implements Serializable {
                 anfi.setNombre(nombre);
                 return true;
             }
-            if (anfi.getTlf() != tlf) {
+            if (!anfi.getTlf().equals(tlf)) {
                 anfi.setTlf(tlf);
                 return true;
             }
@@ -395,10 +384,10 @@ public class UtilCliente implements Serializable {
     }
     
     
-     /** Consulta los datos de un anfitrion por su correo
+    /** Consulta los datos de un anfitrion por su correo
      * @param correo
      * @return objanfi */
-    public static Anfitrion consultaAnfitrionesPorCorreo(String correo) {
+    public static boolean consultaAnfitrionesPorCorreo(String correo) {
         //Comparador para ordenar los particulares por su correo
         Comparator CorreoAnfiComp = new Comparator() {
 
@@ -416,11 +405,40 @@ public class UtilCliente implements Serializable {
         a.setCorreo(correo);
         int pos = Collections.binarySearch(anfitriones, a, CorreoAnfiComp);
         if (pos >= 0) {
-            objanfi = anfitriones.get(pos);
+            return true;
         } else {
-            objanfi = null;
+            return false;
         }
-        return objanfi;
+
+    }
+    
+    
+    /** Consulta los datos de un anfitrion por su correo
+     * @param dni
+     * @return objanfi */
+    public static boolean consultaAnfitrionesPorDni(String dni) {
+        //Comparador para ordenar los particulares por su correo
+        Comparator DniAnfiComp = new Comparator() {
+
+            @Override
+            public int compare(Object o1, Object o2) {
+                Anfitrion a1 = (Anfitrion) o1;
+                Anfitrion a2 = (Anfitrion) o2;
+                return a1.getDni().compareTo(a2.getDni());
+            }
+        };
+        //Ordenamos el array
+        Collections.sort(anfitriones, DniAnfiComp);
+        //creamos una persona con el nombre a buscar
+        Anfitrion a = new Anfitrion();
+        a.setDni(dni);
+        int pos = Collections.binarySearch(anfitriones, a, DniAnfiComp);
+        if (pos >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+   
         
     }
    
@@ -507,7 +525,7 @@ public class UtilCliente implements Serializable {
                 
             //guardamos el array de anfitriones
                 oosAnfi.writeObject(anfitriones);
-                ostreamAnfi.close();
+                
             } else {
                 System.out.println("Error: No hay datos...");
             }
@@ -529,7 +547,7 @@ public class UtilCliente implements Serializable {
             ObjectInputStream oisAnfi= new ObjectInputStream(istreamAnfi);
             
             anfitriones = (ArrayList) oisAnfi.readObject();
-            istreamAnfi.close();
+            
             
         } catch (IOException ioe) {
             System.out.println("Error de IO: " + ioe.getMessage());

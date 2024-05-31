@@ -4,6 +4,10 @@
  */
 package Interfaces;
 
+import javax.swing.JOptionPane;
+import poo.bnbaye.Anfitrion;
+import poo.bnbaye.UtilCliente;
+
 /**
  *
  * @author Alejandro
@@ -16,6 +20,23 @@ public class CIniciarSesionAnfitrion extends javax.swing.JFrame {
     public CIniciarSesionAnfitrion() {
         initComponents();
     }
+    
+    /**
+     *
+     * @return
+     */
+    public String getJTextFieldCorreo() {
+        return jTextFieldCorreo.getText();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getJPasswordFieldClave1() {
+        return jPasswordFieldClave1.getText();
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +47,120 @@ public class CIniciarSesionAnfitrion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel6 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jTextFieldCorreo1 = new javax.swing.JTextField();
+        jPasswordFieldClave1 = new javax.swing.JPasswordField();
+        jButtonIniciarSesion4 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel6.setBackground(new java.awt.Color(255, 220, 186));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Correo");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel4.setText("Clave");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(34, 34, 34))
+        );
+
+        jTextFieldCorreo1.setText(" ");
+
+        jPasswordFieldClave1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldClave1ActionPerformed(evt);
+            }
+        });
+
+        jButtonIniciarSesion4.setFont(new java.awt.Font("Avenir", 0, 12)); // NOI18N
+        jButtonIniciarSesion4.setText("Iniciar sesión");
+        jButtonIniciarSesion4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIniciarSesion4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordFieldClave1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButtonIniciarSesion4)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextFieldCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(jPasswordFieldClave1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(216, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButtonIniciarSesion4)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPasswordFieldClave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldClave1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldClave1ActionPerformed
+
+    private void jButtonIniciarSesion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesion4ActionPerformed
+
+        try{
+
+            String correo = getJTextFieldCorreo();
+            String clave = getJPasswordFieldClave1();
+
+            Anfitrion anfi = UtilCliente.consultaAnfitrionesPorCorreoYClave(correo,clave);
+            if (anfi != null){
+                FOperacionesAnfitrion foperacionesanfi = new FOperacionesAnfitrion();
+                foperacionesanfi.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay ninguna cuenta con este correo y/o clave", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Excepción al iniciar sesión", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonIniciarSesion4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +199,21 @@ public class CIniciarSesionAnfitrion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonIniciarSesion;
+    private javax.swing.JButton jButtonIniciarSesion1;
+    private javax.swing.JButton jButtonIniciarSesion2;
+    private javax.swing.JButton jButtonIniciarSesion3;
+    private javax.swing.JButton jButtonIniciarSesion4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPasswordField jPasswordFieldClave;
+    private javax.swing.JPasswordField jPasswordFieldClave1;
+    private javax.swing.JTextField jTextFieldCorreo;
+    private javax.swing.JTextField jTextFieldCorreo1;
     // End of variables declaration//GEN-END:variables
 }

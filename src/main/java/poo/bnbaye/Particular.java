@@ -37,7 +37,7 @@ public class Particular extends Cliente implements Serializable {
      * @param vip
      */
     
-    public Particular(String dni, String nombre, long tlf, String correo, String clave, String nomT, String numT, LocalDate fcT, boolean vip) {
+    public Particular(String dni, String nombre, String tlf, String correo, String clave, String nomT, String numT, LocalDate fcT, boolean vip) {
         super(dni, nombre, tlf, correo, clave);
         this.nomT = nomT;
         this.numT = numT;

@@ -21,14 +21,7 @@ public class AEntradaApp extends javax.swing.JFrame {
      * Creates new form EntradaApp
      */
     public AEntradaApp() {
-        try {
-            UtilCliente.cargarDatosParti();
-            UtilCliente.cargarDatosAnfi();
-            initComponents();
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error al cargar datos: " + e.getMessage()); 
-        } 
+        initComponents();
     }
 
     /**
@@ -46,10 +39,13 @@ public class AEntradaApp extends javax.swing.JFrame {
         jButtonIS = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButtonR = new javax.swing.JButton();
-        jButtonCerrar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 220, 186));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -84,24 +80,11 @@ public class AEntradaApp extends javax.swing.JFrame {
         });
         jPanel1.add(jButtonR, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 130, 40));
 
-        jButtonCerrar.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
-        jButtonCerrar.setText("X");
-        jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCerrarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButtonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 50, 40));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/fc7a84af-b474-4dec-97d6-2c4228d0e8b7.jpg"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 450, 380));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 920, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,11 +107,10 @@ public class AEntradaApp extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jButtonRActionPerformed
 
-    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
     UtilCliente.guardarDatosParti();
     UtilCliente.guardarDatosAnfi();
-    
-    }//GEN-LAST:event_jButtonCerrarActionPerformed
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -181,13 +163,11 @@ public class AEntradaApp extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonCerrar;
     private javax.swing.JButton jButtonIS;
     private javax.swing.JButton jButtonR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

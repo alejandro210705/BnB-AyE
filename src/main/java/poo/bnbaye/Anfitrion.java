@@ -5,7 +5,7 @@
 package poo.bnbaye;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -15,9 +15,9 @@ import java.util.List;
  */
 public class Anfitrion extends Cliente implements Serializable {
     
-    public LocalDate fr; //fecha de registro en la app 
+    private LocalDateTime fr; //fecha de registro en la app 
     
-    public int calificacion; //calificacion de los anfitriones (media de reseñas)
+    private int calificacion; //calificacion de los anfitriones (media de reseñas)
 
     
     //constructor
@@ -31,7 +31,7 @@ public class Anfitrion extends Cliente implements Serializable {
      * @param fr
      * @param calificacion
      */
-    public Anfitrion(String dni, String nombre, long tlf, String correo, String clave, LocalDate fr, int calificacion) {
+    public Anfitrion(String dni, String nombre, String tlf, String correo, String clave, LocalDateTime fr, int calificacion) {
         super(dni, nombre, tlf, correo, clave);
         this.fr = fr;
         this.calificacion = calificacion;
@@ -67,7 +67,7 @@ public class Anfitrion extends Cliente implements Serializable {
      *
      * @return the value of fr
      */
-    public LocalDate getFr() {
+    public LocalDateTime getFr() {
         return fr;
     }
 
@@ -76,7 +76,7 @@ public class Anfitrion extends Cliente implements Serializable {
      *
      * @param fr new value of fr
      */
-    public void setFr(LocalDate fr) {
+    public void setFr(LocalDateTime fr) {
         this.fr = fr;
     }
 

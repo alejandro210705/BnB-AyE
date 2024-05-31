@@ -37,9 +37,9 @@ public class AAAPanelDatosAnfitrion extends javax.swing.JFrame {
         jTextFieldCorreo = new javax.swing.JTextField();
         jTextFieldDni = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
-        jTextFieldTlf = new javax.swing.JTextField();
         jPasswordFieldClave = new javax.swing.JPasswordField();
         jFormattedTextFieldFr = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldTlf = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,9 +75,8 @@ public class AAAPanelDatosAnfitrion extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 260));
         jPanel1.add(jTextFieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 210, 36));
-        jPanel1.add(jTextFieldDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 210, 40));
+        jPanel1.add(jTextFieldDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 80, 210, 50));
         jPanel1.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 210, 40));
-        jPanel1.add(jTextFieldTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 210, 36));
 
         jPasswordFieldClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,61 +84,23 @@ public class AAAPanelDatosAnfitrion extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jPasswordFieldClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 210, 40));
-        jPanel1.add(jFormattedTextFieldFr, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 210, 40));
+        jPanel1.add(jFormattedTextFieldFr, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 210, 50));
+        jPanel1.add(jFormattedTextFieldTlf, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 210, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 270));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 280));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPasswordFieldClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldClaveActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordFieldClaveActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AAAPanelDatosAnfitrion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AAAPanelDatosAnfitrion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AAAPanelDatosAnfitrion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AAAPanelDatosAnfitrion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AAAPanelDatosAnfitrion().setVisible(true);
-            }
-        });
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField jFormattedTextFieldFr;
+    private javax.swing.JFormattedTextField jFormattedTextFieldTlf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -152,6 +113,5 @@ public class AAAPanelDatosAnfitrion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCorreo;
     private javax.swing.JTextField jTextFieldDni;
     private javax.swing.JTextField jTextFieldNombre;
-    private javax.swing.JTextField jTextFieldTlf;
     // End of variables declaration//GEN-END:variables
 }

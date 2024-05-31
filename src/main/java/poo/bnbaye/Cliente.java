@@ -15,16 +15,16 @@ public class Cliente extends Usuario implements Serializable {
     
     public String dni;
     public String nombre;
-    public long tlf;
+    public String tlf;
 
     
     //constructor 
 
-    public Cliente(String dni, String nombre, long tlf, String correo, String clave) {
+    public Cliente(String dni, String nombre, String tlf, String correo, String clave) {
         super(correo, clave);
         this.dni = dni;
         this.nombre = nombre;
-        this.tlf = tlf;
+        this.tlf= tlf;
     }
     
     public Cliente () {
@@ -36,7 +36,7 @@ public class Cliente extends Usuario implements Serializable {
      *
      * @return the value of tlf
      */
-    public long getTlf() {
+    public String getTlf() {
         return tlf;
     }
 
@@ -45,7 +45,7 @@ public class Cliente extends Usuario implements Serializable {
      *
      * @param tlf new value of tlf
      */
-    public void setTlf(long tlf) {
+    public void setTlf(String tlf) {
         this.tlf = tlf;
     }
 
