@@ -4,16 +4,24 @@
  */
 package Interfaces;
 
+import poo.bnbaye.Anfitrion;
+import poo.bnbaye.Particular;
+import poo.bnbaye.UtilCliente;
+
 /**
  *Interfaz principal, es el primer acceso a la aplicación 
  * @author Alejandro
  */
 public class AEntradaApp extends javax.swing.JFrame {
+    public static Particular objparti;
+    public static Anfitrion objanfi;
 
     /**
      * Creates new form EntradaApp
      */
     public AEntradaApp() {
+        UtilCliente.cargarDatosParti();
+        UtilCliente.cargarDatosAnfi();
         initComponents();
     }
 
@@ -72,6 +80,11 @@ public class AEntradaApp extends javax.swing.JFrame {
 
         jButtonCerrar.setFont(new java.awt.Font("Helvetica Neue", 0, 10)); // NOI18N
         jButtonCerrar.setText("X");
+        jButtonCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCerrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButtonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 50, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/fc7a84af-b474-4dec-97d6-2c4228d0e8b7.jpg"))); // NOI18N
@@ -93,7 +106,6 @@ public class AEntradaApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonISActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonISActionPerformed
-
     CIniciarSesionComo cIniciarSesionComo = new CIniciarSesionComo();
     cIniciarSesionComo.setVisible(true);
     this.dispose();
@@ -105,6 +117,12 @@ public class AEntradaApp extends javax.swing.JFrame {
     this.dispose();
     
     }//GEN-LAST:event_jButtonRActionPerformed
+
+    private void jButtonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCerrarActionPerformed
+    UtilCliente.guardarDatosParti();
+    UtilCliente.guardarDatosAnfi();
+    
+    }//GEN-LAST:event_jButtonCerrarActionPerformed
 
     /**
      * @param args the command line arguments

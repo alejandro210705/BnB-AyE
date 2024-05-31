@@ -20,7 +20,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- *clase para almacenar, guardar, ordenar, buscar, etc los clientes registrados en nuestra app
+ * clase para almacenar, guardar, ordenar, buscar, etc los clientes registrados en nuestra app
  * @author Alejandro
  */
 public class UtilCliente implements Serializable {
@@ -30,7 +30,7 @@ public class UtilCliente implements Serializable {
     public static Particular objparti;
     
     
-     /** Establece el ArrayList de particulares
+    /** Establece el ArrayList de particulares
     * @param p */
     public static void setParticulares(ArrayList<Particular> p) {
         particulares = p;
@@ -250,6 +250,7 @@ public class UtilCliente implements Serializable {
                 
                 //guardamos el array de personas
                 oosParti.writeObject(particulares);
+                ostreamParti.close();
                 }
                 
                 
@@ -287,5 +288,260 @@ public class UtilCliente implements Serializable {
     }//fin cargarDatos
     
     
+    
+//////////////////////////////////////////////////////////////////  
+    
+    
+    //Segundo comenzamos con los metodos de los anfitriones
+    public static ArrayList<Anfitrion> anfitriones = new ArrayList<>();
+    public static Anfitrion objanfi;
+    
+    /** Establece el ArrayList de anfitriones
+    * @param p */
+    public static void setAnfitriones(ArrayList<Anfitrion> a) {
+        anfitriones = a;
+    }
+    
+    
+    /** Da de alta a un anfitrion
+     * @param objanfi
+     * @return  boolean */
+    public static boolean altaAnfitriones(Anfitrion objanfi) {
+        if (!anfitriones.contains(objanfi)) {
+            anfitriones.add(objanfi);
+            return true;
+        } else {
+            return false;
+        }
 
+    }
+
+
+        
+    /**@return Devuelve el ArrayList de anfitriones */
+    public static ArrayList<Anfitrion> getAnfitriones() {
+        //Comparador para ordenar a los anfitriones por su correo
+        Comparator CorreoAnfiComp = new Comparator() {
+            
+            @Override
+            public int compare(Object o1, Object o2) {
+                Anfitrion a1 = (Anfitrion) o1;
+                Anfitrion a2 = (Anfitrion) o2;
+                return a1.getCorreo().compareTo(a2.getCorreo());
+            }
+        };
+        //Ordenamos el array
+        Collections.sort(anfitriones, CorreoAnfiComp);
+        return anfitriones;
+    }
+    
+     /** Devuelve un anfitrion por la posición dentro del ArrayList
+     * @param indice
+     * @return objanfi */
+    public static Anfitrion consultaAnfitriones(int indice) {
+        objanfi = anfitriones.get(indice);
+        return objanfi;
+    }
+
+    
+    /** Modifica los datos de un particular
+     * @param anfi
+     * @param dni
+     * @param nombre
+     * @param tlf
+     * @param correo
+     * @param clave
+     * @param fr
+     * @param calificacion
+     * @return boolean */
+    public static boolean modificaAnfitriones(Anfitrion anfi, String dni, String nombre, long tlf, String correo, String clave, LocalDate fr, int calificacion) {
+        if (anfi == null || !anfitriones.contains(anfi)) {
+            return false;
+        }
+        else {
+        
+         if(!anfi.getDni().equals(dni)){
+                anfi.setDni(dni);
+                return true;
+            }
+            if(!anfi.getNombre().equals(nombre)){
+                anfi.setNombre(nombre);
+                return true;
+            }
+            if (anfi.getTlf() != tlf) {
+                anfi.setTlf(tlf);
+                return true;
+            }
+            if(!anfi.getCorreo().equals(correo)){
+                anfi.setCorreo(correo);
+                return true;
+            }
+            if(!anfi.getClave().equals(clave)){
+               anfi.setClave(clave);
+                return true;
+            }
+            if(!anfi.getFr().equals(fr)){
+               anfi.setFr(fr);
+                return true;
+            }
+            if(!(anfi.getCalificacion()==(calificacion))){
+                anfi.setCalificacion(calificacion);
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+    
+    
+     /** Consulta los datos de un anfitrion por su correo
+     * @param correo
+     * @return objanfi */
+    public static Anfitrion consultaAnfitrionesPorCorreo(String correo) {
+        //Comparador para ordenar los particulares por su correo
+        Comparator CorreoAnfiComp = new Comparator() {
+
+            @Override
+            public int compare(Object o1, Object o2) {
+                Anfitrion a1 = (Anfitrion) o1;
+                Anfitrion a2 = (Anfitrion) o2;
+                return a1.getCorreo().compareTo(a2.getCorreo());
+            }
+        };
+        //Ordenamos el array
+        Collections.sort(anfitriones, CorreoAnfiComp);
+        //creamos una persona con el nombre a buscar
+        Anfitrion a = new Anfitrion();
+        a.setCorreo(correo);
+        int pos = Collections.binarySearch(anfitriones, a, CorreoAnfiComp);
+        if (pos >= 0) {
+            objanfi = anfitriones.get(pos);
+        } else {
+            objanfi = null;
+        }
+        return objanfi;
+        
+    }
+   
+     /** Consulta los datos de un anfitrion por su correo y clave
+     * @param clave
+     * @param correo
+     * @return objanfi */
+    public static Anfitrion consultaAnfitrionesPorCorreoYClave(String correo, String clave) {
+        //Comparador para ordenar las personas por su dni
+        Comparator CorreoAnfiComp = new Comparator() {
+
+            
+            @Override
+            public int compare(Object o1, Object o2) {
+                Anfitrion a1 = (Anfitrion) o1;
+                Anfitrion a2 = (Anfitrion) o2;
+                return a1.getCorreo().compareTo(a2.getCorreo());
+            }
+        };
+        //Ordenamos el array
+        Collections.sort(anfitriones, CorreoAnfiComp);
+        //creamos una persona con el nombre a buscar
+        Anfitrion a = new Anfitrion();
+        a.setCorreo(correo);
+        int pos = Collections.binarySearch(anfitriones, a, CorreoAnfiComp);
+        if (pos >= 0) {
+            objanfi = anfitriones.get(pos);
+            if (objanfi.getClave() != clave){
+                objanfi = null;
+            }
+        } else {
+            objanfi = null;
+        }
+
+        return objanfi;
+    }
+    
+    /** Crea un fichero de texto con los datos de un anfitrion
+     * @param anfi
+     * @throws java.io.IOException */
+    public static void generaFicha(Anfitrion anfi) throws IOException {
+        //la siguiente linea de código envuelve el FileWriter en un BufferedWriter para mejoarar la eficiencia de la escritura
+        // y a su vez envuelve el BufferedWriter en un PrintWriter para proporcionar metodos de escritura más convenientes
+        PrintWriter salida = new PrintWriter(new BufferedWriter(new FileWriter(anfi.getCorreo() + ".txt"))); 
+        //con la siguiente línea formateamos la fecha de registro a la aplicación de los anfitriones
+        DateTimeFormatter formatoCorto = DateTimeFormatter.ofPattern("dd/MM/yyyy");        
+    
+
+        salida.println("-------------------------------- Ficha Cliente --------------------------------");
+        salida.println("\n");
+        salida.println("DNI: " + anfi.getDni());
+        salida.println("\n");
+        salida.println("Nombre: " + anfi.getNombre());
+        salida.println("\n");
+        salida.println("Teléfono: " + anfi.getTlf());
+        salida.println("\n");
+        salida.println("Correo: " + anfi.getCorreo());
+        salida.println("\n");
+        salida.println("Clave: " + anfi.getClave());
+        salida.println("\n");
+        salida.println("Fecha de registro: " + anfi.getFr());
+        salida.println("\n");
+        salida.println("Calificacion: " + anfi.getCalificacion());
+        salida.println("\n");
+        salida.println("\n");
+        salida.println("-------------------------------------------------------------------------------");
+        salida.close();
+    }
+    
+    
+    
+    /**
+     * guardar el arrayList anfitrion en copiasegAnfi.dat
+     */
+    public static void guardarDatosAnfi() {
+        try {
+            
+            //Si hay datos los guardamos...
+            if (!anfitriones.isEmpty()) {
+                
+                /****** Serialización de los objetos ******/
+                FileOutputStream ostreamAnfi = new FileOutputStream("copiasegAnfi.dat");
+                ObjectOutputStream oosAnfi = new ObjectOutputStream(ostreamAnfi);
+                
+            //guardamos el array de anfitriones
+                oosAnfi.writeObject(anfitriones);
+                ostreamAnfi.close();
+            } else {
+                System.out.println("Error: No hay datos...");
+            }
+
+        } catch (IOException ioe) {
+            System.out.println("Error de IO: " + ioe.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }//fin guardarDatos
+    
+    /** 
+      * Carga el arraylist anfitrion desde el fichero copiasegAnfi.dat
+      */
+    public static void cargarDatosAnfi() {
+        try {
+            //Lectura de los objetos de tipo persona
+            FileInputStream istreamAnfi = new FileInputStream("copiasegAnfi.dat");
+            ObjectInputStream oisAnfi= new ObjectInputStream(istreamAnfi);
+            
+            anfitriones = (ArrayList) oisAnfi.readObject();
+            istreamAnfi.close();
+            
+        } catch (IOException ioe) {
+            System.out.println("Error de IO: " + ioe.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error de clase no encontrada: " + cnfe.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }//fin cargarDatos
+
+    
+
+    
+    
 }
