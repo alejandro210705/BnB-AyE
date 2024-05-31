@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import javax.swing.JOptionPane;
 import poo.bnbaye.Anfitrion;
 import poo.bnbaye.Particular;
 import poo.bnbaye.UtilCliente;
@@ -20,9 +21,14 @@ public class AEntradaApp extends javax.swing.JFrame {
      * Creates new form EntradaApp
      */
     public AEntradaApp() {
-        UtilCliente.cargarDatosParti();
-        UtilCliente.cargarDatosAnfi();
-        initComponents();
+        try {
+            UtilCliente.cargarDatosParti();
+            UtilCliente.cargarDatosAnfi();
+            initComponents();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error al cargar datos: " + e.getMessage()); 
+        } 
     }
 
     /**
