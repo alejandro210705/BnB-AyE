@@ -89,8 +89,6 @@ public class CIniciarSesionClienteParticular extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
-        jTextFieldCorreo.setText(" ");
-
         jPasswordFieldClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldClaveActionPerformed(evt);
@@ -238,7 +236,5 @@ public class CIniciarSesionClienteParticular extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField jPasswordFieldClave;
     private javax.swing.JTextField jTextFieldCorreo;
-    private javax.swing.JTextField jTextFieldTlf;
-    private javax.swing.JTextField jTextFieldTlf1;
     // End of variables declaration//GEN-END:variables
 }

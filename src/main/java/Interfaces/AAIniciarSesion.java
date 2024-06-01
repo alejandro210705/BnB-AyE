@@ -90,8 +90,6 @@ public class AAIniciarSesion extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
-        jTextFieldCorreo.setText(" ");
-
         jPasswordFieldClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldClaveActionPerformed(evt);

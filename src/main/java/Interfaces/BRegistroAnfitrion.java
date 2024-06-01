@@ -212,6 +212,12 @@ public class BRegistroAnfitrion extends javax.swing.JFrame {
         jLabel6.setText("Fecha de registro (hoy) ");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
+        jTextFieldCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCorreoActionPerformed(evt);
+            }
+        });
+
         jPasswordFieldClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordFieldClaveActionPerformed(evt);
@@ -350,6 +356,10 @@ public class BRegistroAnfitrion extends javax.swing.JFrame {
 
     UtilCliente.guardarDatosAnfi();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextFieldCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCorreoActionPerformed
 
     /**
      * @param args the command line arguments
