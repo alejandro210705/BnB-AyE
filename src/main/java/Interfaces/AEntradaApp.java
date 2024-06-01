@@ -39,6 +39,8 @@ public class AEntradaApp extends javax.swing.JFrame {
         jButtonIS = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButtonR = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -50,13 +52,13 @@ public class AEntradaApp extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 220, 186));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Lao MN", 2, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lao MN", 2, 48)); // NOI18N
         jLabel1.setText("¡BIENVENIDO A JAVABNB!");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 460, 60));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 600, 60));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("Ya tengo una cuenta:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
 
         jButtonIS.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonIS.setText("Iniciar Sesión");
@@ -65,11 +67,11 @@ public class AEntradaApp extends javax.swing.JFrame {
                 jButtonISActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 150, 40));
+        jPanel1.add(jButtonIS, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 150, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setText("¿No tiene una cuenta?");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, -1, -1));
 
         jButtonR.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonR.setText("Registrarse");
@@ -78,7 +80,15 @@ public class AEntradaApp extends javax.swing.JFrame {
                 jButtonRActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonR, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 130, 40));
+        jPanel1.add(jButtonR, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 330, 130, 40));
+
+        jLabel4.setFont(new java.awt.Font("Avenir", 0, 14)); // NOI18N
+        jLabel4.setText("¿Busca el alojamiento idóneo donde disfrutar de sus vacaciones? o por el contrario ¿Desea promocionar su inmueble vacacional?");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 820, 20));
+
+        jLabel5.setFont(new java.awt.Font("Avenir", 0, 14)); // NOI18N
+        jLabel5.setText("Esta es tu aplicación, seleccione una de las dos opciones ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,7 +98,7 @@ public class AEntradaApp extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
 
         pack();
@@ -167,6 +177,8 @@ public class AEntradaApp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
