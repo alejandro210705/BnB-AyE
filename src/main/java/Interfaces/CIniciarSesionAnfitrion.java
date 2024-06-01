@@ -179,14 +179,14 @@ public class CIniciarSesionAnfitrion extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordFieldClaveActionPerformed
 
     private void jButtonIniciarSesion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesion4ActionPerformed
-
+    
         try{
 
             String correo = getJTextFieldCorreo();
             String clave = getJPasswordFieldClave();
 
-            Anfitrion anfi = UtilCliente.consultaAnfitrionesPorCorreoYClave(correo,clave);
-            if (anfi != null){
+            boolean anfitrion = UtilCliente.sesionIniciadaAnfitrion(correo, clave);
+            if (anfitrion == true){
                 FOperacionesAnfitrion foperacionesanfi = new FOperacionesAnfitrion();
                 foperacionesanfi.setVisible(true);
                 this.dispose();
@@ -196,6 +196,8 @@ public class CIniciarSesionAnfitrion extends javax.swing.JFrame {
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, "Excepción al iniciar sesión", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
+        
+        
     }//GEN-LAST:event_jButtonIniciarSesion4ActionPerformed
 
     /**

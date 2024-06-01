@@ -332,6 +332,7 @@ public class UtilCliente implements Serializable {
 
     }
 
+    
 
         
     /**@return Devuelve el ArrayList de anfitriones */
@@ -490,6 +491,17 @@ public class UtilCliente implements Serializable {
 
         return objanfi;
     }
+    
+    public static boolean sesionIniciadaAnfitrion (String correo, String clave) {
+        anfitriones = UtilCliente.getAnfitriones();
+        for (int i = 0; i < anfitriones.size(); i++) {
+            Anfitrion objanfi = UtilCliente.getAnfitriones().get(i);
+            if (objanfi.getCorreo().equals(correo)&& objanfi.getClave().equals(clave));
+            return true;
+        }
+        return false;         
+    }
+    
     
     /** Crea un fichero de texto con los datos de un anfitrion
      * @param anfi
