@@ -27,8 +27,8 @@ import java.util.Comparator;
 public class UtilCliente implements Serializable {
     
     //primero comenzamos con los metodos de los particulares 
-    public static ArrayList<Particular> particulares = new ArrayList<>();
-    public static Particular objparti;
+    private static ArrayList<Particular> particulares = new ArrayList<>();
+    private static Particular objparti;
     
     
     /** Establece el ArrayList de particulares
@@ -41,8 +41,8 @@ public class UtilCliente implements Serializable {
     /** Da de alta un cliente particular
      * @param objparti
      * @return  boolean */
-    public static boolean altaParticular(Particular objparti) {
-        if (!particulares.contains(objparti)) {
+    public static boolean altaParticulares(Particular objparti) {
+        if (!consultaParticularesPorCorreo(objparti.getCorreo())|| !consultaParticularesPorDni(objparti.getDni())) {
             particulares.add(objparti);
             return true;
         } else {
@@ -53,25 +53,13 @@ public class UtilCliente implements Serializable {
     
     /**@return Devuelve el ArrayList de particulares */
     public static ArrayList<Particular> getParticulares() {
-        //Comparador para ordenar a los particulares por su correo
-        Comparator CorreoPartiComp = new Comparator() {
-            
-            @Override
-            public int compare(Object o1, Object o2) {
-                Particular p1 = (Particular) o1;
-                Particular p2 = (Particular) o2;
-                return p1.getCorreo().compareTo(p2.getCorreo());
-            }
-        };
-        //Ordenamos el array
-        Collections.sort(particulares, CorreoPartiComp);
         return particulares;
     }
     
      /** Devuelve un particular por la posición dentro del ArrayList
      * @param indice
      * @return objper */
-    public static Particular consultaParticular(int indice) {
+    public static Particular consultaParticulares(int indice) {
         objparti = particulares.get(indice);
         return objparti;
     }
@@ -88,7 +76,7 @@ public class UtilCliente implements Serializable {
      * @param fcT
      * @param vip
      * @return boolean */
-    public static boolean modificaParticular(Particular parti, String dni, String nombre, String tlf, String correo, String clave, String nomT, String numT, LocalDate fcT, Boolean vip) {
+    public static boolean modificaParticulares(Particular parti, String dni, String nombre, String tlf, String correo, String clave, String nomT, String numT, LocalDateTime fcT, Boolean vip) {
         if (parti == null || !particulares.contains(parti)) {
             return false;
         }
@@ -139,7 +127,7 @@ public class UtilCliente implements Serializable {
     /** Consulta los datos de un particular por su correo
      * @param correo
      * @return objparti */
-    public static Particular consultaParticularPorCorreo(String correo) {
+    public static boolean consultaParticularesPorCorreo(String correo) {
         //Comparador para ordenar los particulares por su correo
         Comparator CorreoPartiComp = new Comparator() {
 
@@ -157,19 +145,46 @@ public class UtilCliente implements Serializable {
         p.setCorreo(correo);
         int pos = Collections.binarySearch(particulares, p, CorreoPartiComp);
         if (pos >= 0) {
-            objparti = particulares.get(pos);
+            return true;
         } else {
-            objparti = null;
+            return false;
         }
+    }
+    
+    /** Consulta los datos de un anfitrion por su correo
+     * @param dni
+     * @return objanfi */
+    public static boolean consultaParticularesPorDni(String dni) {
+        //Comparador para ordenar los particulares por su correo
+        Comparator DniPartiComp = new Comparator() {
 
-        return objparti;
+            @Override
+            public int compare(Object o1, Object o2) {
+                Particular p1 = (Particular) o1;
+                Particular p2 = (Particular) o2;
+                return p1.getDni().compareTo(p2.getDni());
+            }
+        };
+        //Ordenamos el array
+        Collections.sort(particulares, DniPartiComp);
+        //creamos una persona con el nombre a buscar
+        Particular p = new Particular();
+        p.setDni(dni);
+        int pos = Collections.binarySearch(particulares, p, DniPartiComp);
+        if (pos >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+   
+        
     }
     
     /** Consulta los datos de una persona por su correo y clave
      * @param clave
      * @param correo
      * @return objparti */
-    public static Particular consultaParticularPorCorreoYClave(String correo, String clave) {
+    public static Particular consultaParticularesPorCorreoYClave(String correo, String clave) {
         //Comparador para ordenar las personas por su dni
         Comparator CorreoPartiComp = new Comparator() {
 
@@ -189,7 +204,7 @@ public class UtilCliente implements Serializable {
         int pos = Collections.binarySearch(particulares, p, CorreoPartiComp);
         if (pos >= 0) {
             objparti = particulares.get(pos);
-            if (!objparti.getClave().equals(clave)){
+            if (objparti.getClave() !=clave){
                 objparti = null;
             }
         } else {
@@ -298,7 +313,7 @@ public class UtilCliente implements Serializable {
     private static Anfitrion objanfi;
     
     /** Establece el ArrayList de anfitriones
-    * @param p */
+    * @param a */
     public static void setAnfitriones(ArrayList<Anfitrion> a) {
         anfitriones = a;
     }

@@ -6,6 +6,7 @@ package poo.bnbaye;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  *Clase compuesta por todos los atributos comunes de los clientes particulares
@@ -18,7 +19,7 @@ public class Particular extends Cliente implements Serializable {
     
     public String numT; //numero de la tarjeta 
     
-    public LocalDate fcT; //fecha de caducidad de la tarjeta 
+    public LocalDateTime fcT; //fecha de caducidad de la tarjeta 
     
     public boolean vip; //si el cliente particular es vip o no 
 
@@ -37,7 +38,7 @@ public class Particular extends Cliente implements Serializable {
      * @param vip
      */
     
-    public Particular(String dni, String nombre, String tlf, String correo, String clave, String nomT, String numT, LocalDate fcT, boolean vip) {
+    public Particular(String dni, String nombre, String tlf, String correo, String clave, String nomT, String numT, LocalDateTime fcT, boolean vip) {
         super(dni, nombre, tlf, correo, clave);
         this.nomT = nomT;
         this.numT = numT;
@@ -75,7 +76,7 @@ public class Particular extends Cliente implements Serializable {
      *
      * @return the value of fcT
      */
-    public LocalDate getFcT() {
+    public LocalDateTime getFcT() {
         return fcT;
     }
 
@@ -84,7 +85,7 @@ public class Particular extends Cliente implements Serializable {
      *
      * @param fcT new value of fcT
      */
-    public void setFcT(LocalDate fcT) {
+    public void setFcT(LocalDateTime fcT) {
         this.fcT = fcT;
     }
 
