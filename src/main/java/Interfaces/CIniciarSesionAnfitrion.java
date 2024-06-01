@@ -92,6 +92,11 @@ public class CIniciarSesionAnfitrion extends javax.swing.JFrame {
         );
 
         jTextFieldCorreo.setText(" ");
+        jTextFieldCorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCorreoActionPerformed(evt);
+            }
+        });
 
         jPasswordFieldClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,6 +204,10 @@ public class CIniciarSesionAnfitrion extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButtonIniciarSesion4ActionPerformed
+
+    private void jTextFieldCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCorreoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCorreoActionPerformed
 
     /**
      * @param args the command line arguments
