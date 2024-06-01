@@ -14,8 +14,8 @@ import poo.bnbaye.UtilCliente;
  * @author Alejandro
  */
 public class AEntradaApp extends javax.swing.JFrame {
-    public static Particular objparti;
-    public static Anfitrion objanfi;
+    private static Particular objparti;
+    private static Anfitrion objanfi;
 
     /**
      * Creates new form EntradaApp
@@ -108,8 +108,7 @@ public class AEntradaApp extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-    UtilCliente.guardarDatosParti();
-    UtilCliente.guardarDatosAnfi();
+    
     }//GEN-LAST:event_formWindowClosing
 
     /**

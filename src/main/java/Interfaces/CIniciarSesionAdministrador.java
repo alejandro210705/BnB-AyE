@@ -7,7 +7,7 @@ package Interfaces;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Interfaz para que los administradores inicien sesión en la app, comprueba que el correo y clave introducidos son los que debe tener un administrador
  * @author Alejandro
  */
 public class CIniciarSesionAdministrador extends javax.swing.JFrame {
@@ -27,13 +27,14 @@ public class CIniciarSesionAdministrador extends javax.swing.JFrame {
         return jTextFieldCorreo.getText();
     }
 
-    /**
+     /**
      *
      * @return
      */
-    public String getJPasswordFieldClave() {
-        return jPasswordFieldClave.getText();
+    public String getJTextFieldClave() {
+        return jTextFieldClave.getText();
     }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,9 +51,9 @@ public class CIniciarSesionAdministrador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextFieldCorreo = new javax.swing.JTextField();
-        jPasswordFieldClave = new javax.swing.JPasswordField();
         jButtonIniciarSesion4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jTextFieldClave = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,12 +92,6 @@ public class CIniciarSesionAdministrador extends javax.swing.JFrame {
 
         jTextFieldCorreo.setText(" ");
 
-        jPasswordFieldClave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordFieldClaveActionPerformed(evt);
-            }
-        });
-
         jButtonIniciarSesion4.setFont(new java.awt.Font("Avenir", 0, 12)); // NOI18N
         jButtonIniciarSesion4.setText("Iniciar sesión");
         jButtonIniciarSesion4.addActionListener(new java.awt.event.ActionListener() {
@@ -116,13 +111,13 @@ public class CIniciarSesionAdministrador extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordFieldClave, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonIniciarSesion4))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(jButtonIniciarSesion4)
+                    .addComponent(jTextFieldClave))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(109, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(101, 101, 101))
         );
@@ -132,11 +127,11 @@ public class CIniciarSesionAdministrador extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPasswordFieldClave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldClave))
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(jButtonIniciarSesion4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,20 +167,16 @@ public class CIniciarSesionAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordFieldClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldClaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordFieldClaveActionPerformed
-
     private void jButtonIniciarSesion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesion4ActionPerformed
-
-        try {
+    try {
             String correo = getJTextFieldCorreo();
-            String clave = getJPasswordFieldClave();
+            String clave = getJTextFieldClave();
 
             if (correo.equals("admin@javabnb.com") && clave.equals("admin")) {
                 DOperacionesAdministrador doperacionesadministrador = new DOperacionesAdministrador();
                 doperacionesadministrador.setVisible(true);
                 this.dispose();
+               
             } else {
                 JOptionPane.showMessageDialog(this, "Error al iniciar sesion como administrador", "Mensaje", JOptionPane.ERROR_MESSAGE);
             } 
@@ -239,7 +230,11 @@ public class CIniciarSesionAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPasswordField jPasswordFieldClave;
+    private javax.swing.JTextField jTextFieldClave;
     private javax.swing.JTextField jTextFieldCorreo;
     // End of variables declaration//GEN-END:variables
+
+    
+
+    
 }
