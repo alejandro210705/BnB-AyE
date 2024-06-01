@@ -4,6 +4,10 @@
  */
 package Interfaces;
 
+import javax.swing.JOptionPane;
+import poo.bnbaye.Particular;
+import poo.bnbaye.UtilCliente;
+
 /**
  *
  * @author Alejandro
@@ -16,6 +20,23 @@ public class CIniciarSesionClienteParticular extends javax.swing.JFrame {
     public CIniciarSesionClienteParticular() {
         initComponents();
     }
+    
+    /**
+     *
+     * @return
+     */
+    public String getJTextFieldCorreo() {
+        return jTextFieldCorreo.getText();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getJPasswordFieldClave() {
+        return jPasswordFieldClave.getText();
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +47,151 @@ public class CIniciarSesionClienteParticular extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldCorreo = new javax.swing.JTextField();
+        jPasswordFieldClave = new javax.swing.JPasswordField();
+        jButtonIniciarSesion4 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 220, 186));
+
+        jPanel5.setBackground(new java.awt.Color(255, 220, 186));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setText("Correo");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setText("Clave");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(34, 34, 34))
+        );
+
+        jTextFieldCorreo.setText(" ");
+
+        jPasswordFieldClave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldClaveActionPerformed(evt);
+            }
+        });
+
+        jButtonIniciarSesion4.setFont(new java.awt.Font("Avenir", 0, 12)); // NOI18N
+        jButtonIniciarSesion4.setText("Iniciar sesión");
+        jButtonIniciarSesion4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIniciarSesion4ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel3.setText("INICIO DE SESIÓN DE CLIENTES PARTICULARES");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonIniciarSesion4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPasswordFieldClave)
+                            .addComponent(jTextFieldCorreo))
+                        .addGap(30, 30, 30))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(58, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(74, 74, 74))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jTextFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPasswordFieldClave, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jButtonIniciarSesion4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jPasswordFieldClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldClaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldClaveActionPerformed
+
+    private void jButtonIniciarSesion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesion4ActionPerformed
+
+        try{
+
+            String correo = getJTextFieldCorreo();
+            String clave = getJPasswordFieldClave();
+
+            Particular parti = UtilCliente.consultaParticularesPorCorreoYClave(correo,clave);
+            if (parti != null){
+                EOperacionesClienteParticular eoperaciones = new EOperacionesClienteParticular();
+                eoperaciones.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay ninguna cuenta con este correo y/o clave", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Excepción al iniciar sesión", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonIniciarSesion4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +230,15 @@ public class CIniciarSesionClienteParticular extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonIniciarSesion4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPasswordField jPasswordFieldClave;
+    private javax.swing.JTextField jTextFieldCorreo;
+    private javax.swing.JTextField jTextFieldTlf;
+    private javax.swing.JTextField jTextFieldTlf1;
     // End of variables declaration//GEN-END:variables
 }
