@@ -214,6 +214,19 @@ public class UtilCliente implements Serializable {
         return objparti;
     }
     
+    
+    
+    public static boolean sesionIniciadaParticular (String correo, String clave) {
+        particulares = UtilCliente.getParticulares();
+        for (int i = 0; i < particulares.size(); i++) {
+            Particular objparti = UtilCliente.getParticulares().get(i);
+            if (objparti.getCorreo().equals(correo)&& objparti.getClave().equals(clave));
+            return true;
+        }
+        return false;         
+    }
+    
+    
     /** Crea un fichero de texto con los datos de un cliente particular 
      * @param parti
      * @throws java.io.IOException */

@@ -192,10 +192,10 @@ public class CIniciarSesionClienteParticular extends javax.swing.JFrame {
             String correo = getJTextFieldCorreo();
             String clave = getJPasswordFieldClave();
 
-            Particular parti = UtilCliente.consultaParticularesPorCorreoYClave(correo,clave);
-            if (parti != null){
-                EOperacionesClienteParticular eoperaciones = new EOperacionesClienteParticular();
-                eoperaciones.setVisible(true);
+            boolean particular = UtilCliente.sesionIniciadaParticular(correo, clave);
+            if (particular == true){
+                EOperacionesClienteParticular eoperacionesClienteParticular= new EOperacionesClienteParticular();
+                eoperacionesClienteParticular.setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "No hay ninguna cuenta con este correo y/o clave", "Mensaje", JOptionPane.ERROR_MESSAGE);
@@ -203,6 +203,7 @@ public class CIniciarSesionClienteParticular extends javax.swing.JFrame {
         } catch(Exception e){
             JOptionPane.showMessageDialog(this, "Excepción al iniciar sesión", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_jButtonIniciarSesion4ActionPerformed
 
     /**
