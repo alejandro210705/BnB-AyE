@@ -153,7 +153,7 @@ public class FOperacionesAnfitrion extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    FVerInmueblesAnfitrion fVerInmueblesAnfitrion = new FVerInmueblesAnfitrion ();
+    FVerModInmueblesAnfitrion fVerInmueblesAnfitrion = new FVerModInmueblesAnfitrion ();
     fVerInmueblesAnfitrion.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
