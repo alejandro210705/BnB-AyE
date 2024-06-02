@@ -23,14 +23,24 @@ import poo.bnbaye.Anfitrion;
  */
 public class FRegistrarInmuebles extends javax.swing.JFrame {
      
-   
+    private Anfitrion anfitrion;
     private BufferedImage foto = null;
     
     /**
+    * Creates new form F_OperacionesAnfitrion
+    * @param anfitrion
+    */
+    public FRegistrarInmuebles(Anfitrion anfitrion){
+        this.anfitrion = anfitrion;
+        initComponents();
+    }
+    
+    
+    /**
      * Creates new form F_RegistrarInmuebles
+
      */
     public FRegistrarInmuebles() {
-        
         initComponents();
     }
     
@@ -383,7 +393,30 @@ public class FRegistrarInmuebles extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
-     
+        try {
+        String titulo = getJTextFieldTitulo();
+        String calle = getJTextFieldCalle();
+        String numero = getJTextFieldNumero();
+        String codigoPostal = getJTextFieldCodigoPostal();
+        String ciudad = getJTextFieldCiudad();
+        String numHuespedes = getJTextFieldNumHuespedes();
+        String numHabitaciones = getJTextFieldNumHabitaciones();
+        String numCamas = getJTextFieldNumCamas();
+        String numBanos = getJTextFieldNumBanos();
+        String tipoPropiedad = getComboBoxTipoPropiedad();
+        double precioNoche = Double.parseDouble(getJFormattedTextFieldPrecioNoche());
+        String servicios = getJTextFieldServicios();
+
+        Inmueble inmueble = new Inmueble(titulo,calle,numero,codigoPostal,ciudad,numHuespedes,numHabitaciones,numCamas,numBanos,tipoPropiedad,precioNoche,servicios,anfitrion.getCorreo());
+        if(UtilInmueble.registrarInmueble(inmueble)){
+            JOptionPane.showMessageDialog(this, "Inmueble registrado en la app", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al registrar el inmueble en la app", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Excepción al registrar el inmueble", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
     /**

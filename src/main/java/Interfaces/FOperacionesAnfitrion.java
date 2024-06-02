@@ -4,18 +4,33 @@
  */
 package Interfaces;
 
+import poo.bnbaye.Anfitrion;
 /**
  *
  * @author Alejandro
  */
 public class FOperacionesAnfitrion extends javax.swing.JFrame {
-
+    
+    private Anfitrion anfitrion;
+    
+    /**
+     * Creates new form F_OperacionesAnfitrion
+     * @param anfitrion
+     */
+    public FOperacionesAnfitrion(Anfitrion anfitrion){
+        this.anfitrion = anfitrion;
+        initComponents();
+    }
+    
     /**
      * Creates new form F_OperacionesAnfitrion
      */
     public FOperacionesAnfitrion() {
+      
         initComponents();
     }
+    
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -141,7 +156,7 @@ public class FOperacionesAnfitrion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    FRegistrarInmuebles fRegistrarInmuebles  = new FRegistrarInmuebles();
+    FRegistrarInmuebles fRegistrarInmuebles  = new FRegistrarInmuebles(anfitrion);
     fRegistrarInmuebles.setVisible(true);
     this.dispose();   
     }//GEN-LAST:event_jButton1ActionPerformed

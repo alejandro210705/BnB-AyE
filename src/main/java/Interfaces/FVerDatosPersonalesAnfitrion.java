@@ -3,17 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
-
+import poo.bnbaye.Anfitrion;
 /**
  *
  * @author Alejandro
  */
 public class FVerDatosPersonalesAnfitrion extends javax.swing.JFrame {
-
+     
+   
     /**
      * Creates new form F_VerDatosPersonalesAnfitrion
      */
-    public FVerDatosPersonalesAnfitrion() {
+    public FVerDatosPersonalesAnfitrion() { 
         initComponents();
     }
 

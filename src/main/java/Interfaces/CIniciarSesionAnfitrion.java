@@ -224,7 +224,7 @@ public class CIniciarSesionAnfitrion extends javax.swing.JFrame {
 
             Anfitrion anfitrion = UtilCliente.sesionIniciadaAnfitrion(correo, clave);
             if (anfitrion != null){
-                FOperacionesAnfitrion foperacionesanfi = new FOperacionesAnfitrion();
+                FOperacionesAnfitrion foperacionesanfi = new FOperacionesAnfitrion(anfitrion);
                 foperacionesanfi.setVisible(true);
                 this.dispose();
             } else {
