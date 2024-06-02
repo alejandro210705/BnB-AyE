@@ -413,6 +413,8 @@ public class UtilCliente implements Serializable {
     }
     
     
+    
+    
     /** Consulta los datos de un anfitrion por su correo
      * @param correo
      * @return objanfi */
@@ -598,6 +600,14 @@ public class UtilCliente implements Serializable {
         }
     }//fin cargarDatos
 
+       public static Anfitrion obtenerAnfitrion(String correo, String clave){
+        for (Anfitrion anfitrion : anfitriones) {
+            if (anfitrion.getCorreo().equals(correo) && anfitrion.getClave().equals(clave)){
+                return anfitrion;
+            }
+        }
+        return null;
+    }
     
 
     

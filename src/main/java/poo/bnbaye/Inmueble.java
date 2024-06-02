@@ -70,6 +70,25 @@ public class Inmueble implements Serializable{
     public Inmueble(){
         
     }
+
+    public Inmueble(String titulo, String calle, String numero, String codigoPostal, String ciudad, String numHuespedes, String numHabitaciones, String numCamas, String numBanos, String tipoPropiedad, double precioNoche, String servicios, String correoAnfitrion, BufferedImage foto) {
+        this.titulo = titulo;
+        this.calle = calle;
+        this.numero = numero;
+        this.codigoPostal = codigoPostal;
+        this.ciudad = ciudad;
+        this.numHuespedes = numHuespedes;
+        this.numHabitaciones = numHabitaciones;
+        this.numCamas = numCamas;
+        this.numBanos = numBanos;
+        this.tipoPropiedad = tipoPropiedad;
+        this.precioNoche = precioNoche;
+        this.servicios = servicios;
+        this.correoAnfitrion = correoAnfitrion;
+        this.foto = foto;
+    }
+    
+    
     
     
     /**
