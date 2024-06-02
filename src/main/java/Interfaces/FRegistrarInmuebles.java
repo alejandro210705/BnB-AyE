@@ -407,7 +407,7 @@ public class FRegistrarInmuebles extends javax.swing.JFrame {
         double precioNoche = Double.parseDouble(getJFormattedTextFieldPrecioNoche());
         String servicios = getJTextFieldServicios();
 
-        Inmueble inmueble = new Inmueble(titulo,calle,numero,codigoPostal,ciudad,numHuespedes,numHabitaciones,numCamas,numBanos,tipoPropiedad,precioNoche,servicios,anfitrion.getCorreo());
+        Inmueble inmueble = new Inmueble(titulo,calle,numero,codigoPostal,ciudad,numHuespedes,numHabitaciones,numCamas,numBanos,tipoPropiedad,precioNoche,servicios,anfitrion.getCorreo(),foto);
         if(UtilInmueble.registrarInmueble(inmueble)){
             JOptionPane.showMessageDialog(this, "Inmueble registrado en la app", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         } else {
