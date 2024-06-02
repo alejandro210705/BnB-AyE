@@ -236,6 +236,11 @@ public class FRegistrarInmuebles extends javax.swing.JFrame {
         });
 
         jButton2.setText("Guardar ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Volver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -248,6 +253,11 @@ public class FRegistrarInmuebles extends javax.swing.JFrame {
         jLabel15.setText("Insertar foto del inmueble");
 
         jButton4.setText("Insertar foto");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -406,8 +416,9 @@ public class FRegistrarInmuebles extends javax.swing.JFrame {
         String tipoPropiedad = getComboBoxTipoPropiedad();
         double precioNoche = Double.parseDouble(getJFormattedTextFieldPrecioNoche());
         String servicios = getJTextFieldServicios();
+        
 
-        Inmueble inmueble = new Inmueble(titulo,calle,numero,codigoPostal,ciudad,numHuespedes,numHabitaciones,numCamas,numBanos,tipoPropiedad,precioNoche,servicios,anfitrion.getCorreo(),foto);
+        Inmueble inmueble = new Inmueble(titulo, calle, numero, codigoPostal, ciudad, numHuespedes, numHabitaciones, numCamas, numBanos, tipoPropiedad, precioNoche, servicios,anfitrion.getCorreo(), foto);
         if(UtilInmueble.registrarInmueble(inmueble)){
             JOptionPane.showMessageDialog(this, "Inmueble registrado en la app", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -418,6 +429,14 @@ public class FRegistrarInmuebles extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Excepción al registrar el inmueble", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    UtilInmueble.guardarDatosInmu();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

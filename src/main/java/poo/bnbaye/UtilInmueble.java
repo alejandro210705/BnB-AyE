@@ -16,6 +16,7 @@ import java.time.format.DateTimeFormatter;
 import poo.bnbaye.Anfitrion;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 /**
  *
  * @author Alejandro
@@ -25,15 +26,17 @@ public class UtilInmueble {
     private static  ArrayList<Inmueble> inmuebles = new ArrayList<>();
     private static  Inmueble objinmu;
     
-    /** Establece el ArrayList de anfitriones
+    /** Establece el ArrayList de inmuebles
     * @param i */
     public static void setInmuebles(ArrayList<Inmueble> i) {
         inmuebles = i;
     }
     
-    
+    /** Da de alta un inmueble
+     * @param objinmu
+     * @return  boolean */
     public static boolean registrarInmueble(Inmueble objinmu) {
-        if (!inmuebles.contains(objinmu)) {
+        if (!consultaInmueblesPorTitulo(objinmu.getTitulo())|| !consultaInmueblesPorCiudad(objinmu.getCiudad())) {
             inmuebles.add(objinmu);
             return true;
         } else {
@@ -42,7 +45,77 @@ public class UtilInmueble {
 
     }
     
-    /** Crea un fichero de texto con los datos de un anfitrion
+    /** Da de baja un inmueble
+     * @param objinmu
+     * @return boolean */
+    public static boolean bajaInmueble(Inmueble objinmu) {
+        if (consultaInmueblesPorTitulo(objinmu.getTitulo())|| consultaInmueblesPorCiudad(objinmu.getCiudad())) {
+            inmuebles.remove(objinmu);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    
+    
+    /** Consulta los datos de un inmueble por el Titulo
+     * @param titulo
+     * @return objinmu */
+    public static boolean consultaInmueblesPorTitulo(String titulo) {
+        //Comparador para ordenar los inmuebles por su titulo
+        Comparator TituloInmuComp = new Comparator() {
+
+            @Override
+            public int compare(Object o1, Object o2) {
+                Inmueble i1 = (Inmueble) o1;
+                Inmueble i2 = (Inmueble) o2;
+                return i1.getTitulo().compareTo(i2.getTitulo());
+            }
+        };
+        //Ordenamos el array
+        Collections.sort(inmuebles, TituloInmuComp);
+        //creamos un inmueble con el nombre a buscar
+        Inmueble i = new Inmueble();
+        i.setTitulo(titulo);
+        int pos = Collections.binarySearch(inmuebles, i, TituloInmuComp);
+        if (pos >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    
+    /** Consulta los datos de un inmueble por la ciudad
+     * @param ciudad
+     * @return objinmu */
+    public static boolean consultaInmueblesPorCiudad(String ciudad) {
+        //Comparador para ordenar los inmuebles por ciudad
+        Comparator CiudadInmuComp = new Comparator() {
+
+            @Override
+            public int compare(Object o1, Object o2) {
+                Inmueble i1 = (Inmueble) o1;
+                Inmueble i2 = (Inmueble) o2;
+                return i1.getCiudad().compareTo(i2.getCiudad());
+            }
+        };
+        //Ordenamos el array
+        Collections.sort(inmuebles, CiudadInmuComp);
+        //creamos un inmueble con el nombre a buscar
+        Inmueble i = new Inmueble();
+        i.setCiudad(ciudad);
+        int pos = Collections.binarySearch(inmuebles, i, CiudadInmuComp);
+        if (pos >= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    
+    /** Crea un fichero de texto con los datos de un inmueble
      * @param inmu
      * @throws java.io.IOException */
     public static void generaFicha(Inmueble inmu) throws IOException {
@@ -86,9 +159,9 @@ public class UtilInmueble {
     
     
     /**
-     * guardar el arrayList anfitrion en copiasegAnfi.dat
+     * guardar el arrayList inmueble en copiasegInmu.dat
      */
-    public static void guardarDatosAnfi() {
+    public static void guardarDatosInmu() {
         try {
             
             //Si hay datos los guardamos...
@@ -102,7 +175,7 @@ public class UtilInmueble {
                     
                    
                     ObjectInputStream oisInmu = new ObjectInputStream(new FileInputStream ("/Users/eva/Desktop/javabnb_ser/copiasegInmu.dat"));
-                    ArrayList<Inmueble> inmueblesRecuperados= (ArrayList<Inmueble>) oisInmu.readObject();
+                    ArrayList<Inmueble> inmueblesRecuperados = (ArrayList<Inmueble>) oisInmu.readObject();
                     oosInmu.close();
                     
                     for (Inmueble inmu : inmueblesRecuperados) {
@@ -125,7 +198,7 @@ public class UtilInmueble {
     }//fin guardarDatos
     
     /** 
-      * Carga el arraylist anfitrion desde el fichero copiasegAnfi.dat
+      * Carga el arraylist inmueble desde el fichero copiasegInmu.dat
       */
     public static void cargarDatosAnfi() {
         try {
