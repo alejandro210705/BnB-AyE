@@ -216,15 +216,18 @@ public class UtilCliente implements Serializable {
     
     
     
-    public static boolean sesionIniciadaParticular (String correo, String clave) {
+    public static Particular sesionIniciadaParticular (String correo, String clave) {
         particulares = UtilCliente.getParticulares();
         for (int i = 0; i < particulares.size(); i++) {
             Particular objparti = UtilCliente.getParticulares().get(i);
-            if (objparti.getCorreo().equals(correo)&& objparti.getClave().equals(clave));
-            return true;
+            if (objparti.getCorreo().equals(correo)&& objparti.getClave().equals(clave)){
+                return objparti;
+            }
         }
-        return false;         
+        return null;         
     }
+    
+    
     
     
     /** Crea un fichero de texto con los datos de un cliente particular 
@@ -274,12 +277,21 @@ public class UtilCliente implements Serializable {
             if (!particulares.isEmpty()) {
                 
                 /****** Serialización de los objetos ******/
-                try (FileOutputStream ostreamParti = new FileOutputStream("copiasegParti.dat");
-                ObjectOutputStream oosParti = new ObjectOutputStream(ostreamParti)){
+                try {
+                    ObjectOutputStream oosParti = new ObjectOutputStream(new FileOutputStream("/Users/eva/Desktop/javabnb_ser/copiasegParti.dat"));
+                    oosParti.writeObject(particulares);
+                    oosParti.close();
+                    
+                    ObjectInputStream oisParti = new ObjectInputStream(new FileInputStream ("/Users/eva/Desktop/javabnb_ser/copiasegParti.dat"));
+                    ArrayList<Particular> particularesRecuperados= (ArrayList<Particular>) oisParti.readObject();
+                    oisParti.close();
+                    
+                    for (Particular parti : particularesRecuperados) {
+                        System.out.println (parti);
+                    }
                 
-                //guardamos el array de personas
-                oosParti.writeObject(particulares);
-                
+                }catch (Exception e) {
+                  System.out.println("Error: " + e.getMessage());
                 }
                 
                 
@@ -287,8 +299,7 @@ public class UtilCliente implements Serializable {
                 System.out.println("Error: No hay datos...");
             }
 
-        } catch (IOException ioe) {
-            System.out.println("Error de IO: " + ioe.getMessage());
+        
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -505,14 +516,15 @@ public class UtilCliente implements Serializable {
         return objanfi;
     }
     
-    public static boolean sesionIniciadaAnfitrion (String correo, String clave) {
+    public static Anfitrion sesionIniciadaAnfitrion (String correo, String clave) {
         anfitriones = UtilCliente.getAnfitriones();
         for (int i = 0; i < anfitriones.size(); i++) {
             Anfitrion objanfi = UtilCliente.getAnfitriones().get(i);
-            if (objanfi.getCorreo().equals(correo)&& objanfi.getClave().equals(clave));
-            return true;
+            if (objanfi.getCorreo().equals(correo)&& objanfi.getClave().equals(clave)) {
+                return objanfi;
+            }
         }
-        return false;         
+        return null;         
     }
     
     
@@ -557,21 +569,33 @@ public class UtilCliente implements Serializable {
         try {
             
             //Si hay datos los guardamos...
-            if (!anfitriones.isEmpty()) {
+            if (!particulares.isEmpty()) {
                 
                 /****** Serialización de los objetos ******/
-                FileOutputStream ostreamAnfi = new FileOutputStream("copiasegAnfi.dat");
-                ObjectOutputStream oosAnfi = new ObjectOutputStream(ostreamAnfi);
+                try {
+                    ObjectOutputStream oosAnfi = new ObjectOutputStream(new FileOutputStream("/Users/eva/Desktop/javabnb_ser/copiasegAnfi.dat"));
+                    oosAnfi.writeObject(anfitriones);
+                    oosAnfi.close();
+                    
+                   
+                    ObjectInputStream oisAnfi = new ObjectInputStream(new FileInputStream ("/Users/eva/Desktop/javabnb_ser/copiasegAnfi.dat"));
+                    ArrayList<Anfitrion> anfitrionesRecuperados= (ArrayList<Anfitrion>) oisAnfi.readObject();
+                    oisAnfi.close();
+                    
+                    for (Anfitrion anfi : anfitrionesRecuperados) {
+                        System.out.println (anfi);
+                    }
                 
-            //guardamos el array de anfitriones
-                oosAnfi.writeObject(anfitriones);
+                }catch (Exception e) {
+                  System.out.println("Error: " + e.getMessage());
+                }
+                
                 
             } else {
                 System.out.println("Error: No hay datos...");
             }
 
-        } catch (IOException ioe) {
-            System.out.println("Error de IO: " + ioe.getMessage());
+        
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
