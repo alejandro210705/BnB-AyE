@@ -5,6 +5,12 @@
 package Interfaces;
 
 import poo.bnbaye.Anfitrion;
+import poo.bnbaye.Inmueble;
+import poo.bnbaye.UtilInmueble;
+import java.util.ArrayList;
+import java.util.ListIterator;
+import javax.swing.JOptionPane;
+import poo.bnbaye.UtilCliente;
 
 /**
  *
@@ -13,6 +19,10 @@ import poo.bnbaye.Anfitrion;
 public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
     
     private Anfitrion anfitrion;
+    private ArrayList<Inmueble> InmueblesAnfitriones;
+    private ArrayList<Inmueble> inmaux;
+    private ListIterator<Inmueble> li;
+    private Inmueble objinmu;
 
     /**
      * Creates new form F_AdministrarInmuebles
@@ -23,13 +33,137 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
         initComponents();
     }
     
-    
     /**
      * Creates new form F_AdministrarInmuebles
      */
     public FVerModInmueblesAnfitrion() {
         initComponents();
     }
+    
+    
+      public void setJTextFieldTitulo(String txt) {
+        this.jTextFieldTitulo.setText(txt);
+    }
+    
+    public void setJTextFieldCalle(String txt) {
+        this.jTextFieldCalle.setText(txt);
+    }
+    
+    public void setJTextFieldNumero(String txt) {
+        this.jTextFieldNumero.setText(txt);
+    }
+    
+    public void setJTextFieldCodigoPostal(String txt) {
+        this.jTextFieldCodigoPostal.setText(txt);
+    }
+    
+    public void setJTextFieldCiudad(String txt) {
+        this.jTextFieldCiudad.setText(txt);
+    }
+    
+    public void setJTextFieldNumHuespedes(String txt) {
+        this.jTextFieldNumHuespedes.setText(txt);
+    }
+    
+    public void setJTextFieldNumHabitaciones(String txt) {
+        this.jTextFieldNumHabitaciones.setText(txt);
+    }
+    
+    public void setJTextFieldNumCamas(String txt) {
+        this.jTextFieldNumCamas.setText(txt);
+    }
+    
+    public void setJTextFieldNumBanos(String txt) {
+        this.jTextFieldNumBanos.setText(txt);
+    }
+    
+    public void setJTextFieldTipoPropiedad(String txt) {
+        this.jTextFieldTipoPropiedad.setText(txt);
+    }
+    
+    public void setJTextFieldPrecioNoche(String txt) {
+        this.jTextFieldPrecioNoche.setText(txt);
+    }
+    
+    public void setJTextFieldCalificacion(String txt) {
+        this.jTextFieldCalificacion.setText(txt);
+    }
+    
+    public void setJTextFieldServicios(String txt) {
+        this.jTextFieldServicios.setText(txt);
+    }
+    
+    
+    public static ArrayList<Inmueble> obtenerArrayListAnfitriones (ArrayList<Inmueble> inmaux, Anfitrion anfitrion) {
+        ArrayList<Inmueble> InmueblesAnfitrion = new ArrayList<>();
+        inmaux = UtilInmueble.getInmuebles();
+        
+        for (Inmueble inmueble : inmaux) {
+            if (inmueble.getCorreoAnfitrion().equals(anfitrion.getCorreo())) {
+                InmueblesAnfitrion.add(inmueble);
+            }
+        }
+        
+        return InmueblesAnfitrion;
+    }
+    
+    
+    
+    
+      private void Presenta(Inmueble inmu){
+        setJTextFieldTitulo(inmu.getTitulo());
+        setJTextFieldCalle(inmu.getCalle());
+        setJTextFieldNumero(inmu.getNumero());
+        setJTextFieldCodigoPostal(inmu.getCodigoPostal());
+        setJTextFieldCiudad(inmu.getCiudad());
+        setJTextFieldNumHuespedes(inmu.getNumHuespedes());
+        setJTextFieldNumHabitaciones(inmu.getNumHabitaciones());
+        setJTextFieldNumCamas(inmu.getNumCamas());
+        setJTextFieldNumBanos(inmu.getNumBanos());
+        setJTextFieldTipoPropiedad(inmu.getTipoPropiedad());
+        setJTextFieldPrecioNoche(String.valueOf(inmu.getPrecioNoche()));
+        setJTextFieldCalificacion(String.valueOf(inmu.getCalificacion()));
+        setJTextFieldServicios(inmu.getServicios());
+    }
+      
+      
+      
+     /** Consulta las personas del ArrayList ordenadas para su presentación */
+    private void consultarTodo() {
+        try {
+            //referenciamos al ArrayList de UtilCenso
+            inmaux = UtilInmueble.getInmuebles();
+            InmueblesAnfitriones = obtenerArrayListAnfitriones(inmaux,anfitrion) ;
+            //creamos el iterador sobre el ArrayList
+            li = InmueblesAnfitriones.listIterator();
+            //si no hay personas...
+            if (InmueblesAnfitriones.size() < 1) {
+                JOptionPane.showMessageDialog(this, "No hay personas.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                jButtonSiguiente.setEnabled(false);
+                jButtonAnterior.setEnabled(false);
+                return;
+            } else {
+                jButtonSiguiente.setEnabled(true);
+                jButtonAnterior.setEnabled(true);
+            }
+            //presentamos la primera persona
+            if (li.hasNext()) {
+                objinmu = (Inmueble) li.next();
+            }
+            if (objinmu != null) {
+                Presenta(objinmu);
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay personas.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+            System.out.println("Error: " + e.toString());
+        }
+    }//fin consultarTodo
+
+    
+    
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,8 +178,8 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        jTextFieldTitulo = new javax.swing.JTextField();
+        jTextFieldNumBanos = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -60,20 +194,20 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        jTextFieldNumCamas = new javax.swing.JTextField();
+        jTextFieldNumHabitaciones = new javax.swing.JTextField();
+        jTextFieldNumHuespedes = new javax.swing.JTextField();
+        jTextFieldCiudad = new javax.swing.JTextField();
+        jTextFieldCodigoPostal = new javax.swing.JTextField();
+        jTextFieldNumero = new javax.swing.JTextField();
+        jTextFieldCalle = new javax.swing.JTextField();
+        jTextFieldServicios = new javax.swing.JTextField();
+        jTextFieldPrecioNoche = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
+        jButtonSiguiente = new javax.swing.JButton();
+        jButtonAnterior = new javax.swing.JButton();
+        jTextFieldTipoPropiedad = new javax.swing.JTextField();
+        jTextFieldCalificacion = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,7 +245,7 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Ciudad");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Número de huespedes");
@@ -148,16 +282,21 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Avenir", 2, 18)); // NOI18N
         jLabel14.setText("VISUALIZACIÓN Y MODIFICACIÓN DE INMUEBLES");
 
-        jButton4.setText("Siguiente");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSiguiente.setText("Siguiente");
+        jButtonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonSiguienteActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Anterior ");
+        jButtonAnterior.setText("Anterior ");
+        jButtonAnterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnteriorActionPerformed(evt);
+            }
+        });
 
-        jTextField13.setText(" ");
+        jTextFieldCalificacion.setText(" ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,11 +304,11 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
-                .addComponent(jButton5)
+                .addComponent(jButtonAnterior)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4)
+                    .addComponent(jButtonSiguiente)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3))
                 .addGap(56, 56, 56))
@@ -181,8 +320,8 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
                         .addGap(213, 213, 213))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField11)
-                            .addComponent(jTextField13, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
+                            .addComponent(jTextFieldTipoPropiedad)
+                            .addComponent(jTextFieldCalificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
                         .addGap(244, 244, 244))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -191,20 +330,20 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField1))
+                            .addComponent(jTextFieldTitulo))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(6, 6, 6)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField10)
-                                .addComponent(jTextField12)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))))
+                                .addComponent(jTextFieldPrecioNoche)
+                                .addComponent(jTextFieldServicios)
+                                .addComponent(jTextFieldNumBanos, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(jTextFieldNumCamas, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(jTextFieldNumHabitaciones, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(jTextFieldNumHuespedes, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(jTextFieldCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(jTextFieldCodigoPostal, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(jTextFieldNumero, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                                .addComponent(jTextFieldCalle, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))))
                     .addGap(242, 242, 242)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -215,16 +354,16 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonAnterior, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButtonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 297, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldTipoPropiedad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldCalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(46, 46, 46))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,27 +378,27 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCodigoPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldNumHuespedes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldNumHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldNumCamas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldNumBanos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(48, 48, 48)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldPrecioNoche, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(48, 48, 48)
-                            .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jTextFieldServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(66, 66, 66)))
         );
 
@@ -286,9 +425,31 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSiguienteActionPerformed
+       // TODO add your handling code here:
+    //Comprobamos el rango del ArrayList...
+    if (li.hasNext()) {
+        objinmu = li.next();
+        if (objinmu != null) {
+            Presenta(objinmu);
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay personas.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_jButtonSiguienteActionPerformed
+
+    private void jButtonAnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnteriorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    //Comprobamos el rango del ArrayList...
+    if (li.hasPrevious()) {
+        objinmu = li.previous();
+        if (objinmu != null) {
+            Presenta(objinmu);
+        } else {
+            JOptionPane.showMessageDialog(this, "No hay personas.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_jButtonAnteriorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -344,8 +505,8 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButtonAnterior;
+    private javax.swing.JButton jButtonSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -362,18 +523,18 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldCalificacion;
+    private javax.swing.JTextField jTextFieldCalle;
+    private javax.swing.JTextField jTextFieldCiudad;
+    private javax.swing.JTextField jTextFieldCodigoPostal;
+    private javax.swing.JTextField jTextFieldNumBanos;
+    private javax.swing.JTextField jTextFieldNumCamas;
+    private javax.swing.JTextField jTextFieldNumHabitaciones;
+    private javax.swing.JTextField jTextFieldNumHuespedes;
+    private javax.swing.JTextField jTextFieldNumero;
+    private javax.swing.JTextField jTextFieldPrecioNoche;
+    private javax.swing.JTextField jTextFieldServicios;
+    private javax.swing.JTextField jTextFieldTipoPropiedad;
+    private javax.swing.JTextField jTextFieldTitulo;
     // End of variables declaration//GEN-END:variables
 }
