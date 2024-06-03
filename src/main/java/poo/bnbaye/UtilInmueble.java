@@ -178,14 +178,13 @@ public class UtilInmueble {
                     oosInmu.writeObject(inmuebles);
                     oosInmu.close();
                     
-                   
                     ObjectInputStream oisInmu = new ObjectInputStream(new FileInputStream ("/Users/eva/Desktop/javabnb_ser/copiasegInmu.dat"));
                     ArrayList<Inmueble> inmueblesRecuperados = (ArrayList<Inmueble>) oisInmu.readObject();
-                    oosInmu.close();
+                    oisInmu.close();
                     
-                    for (Inmueble inmu : inmueblesRecuperados) {
+                   for (Inmueble inmu : inmueblesRecuperados) {
                         System.out.println (inmu);
-                    }
+                }
                 
                 }catch (Exception e) {
                   System.out.println("Error: " + e.getMessage());
@@ -205,13 +204,16 @@ public class UtilInmueble {
     /** 
       * Carga el arraylist inmueble desde el fichero copiasegInmu.dat
       */
-    public static void cargarDatosAnfi() {
+    public static void cargarDatosInmu() {
         try {
-            //Lectura de los objetos de tipo persona
-            FileInputStream istreamInmu = new FileInputStream("copiasegInmu.dat");
-            ObjectInputStream oisInmu= new ObjectInputStream(istreamInmu);
-            
-            inmuebles = (ArrayList) oisInmu.readObject();
+                ObjectInputStream oisInmu = new ObjectInputStream(new FileInputStream ("/Users/eva/Desktop/javabnb_ser/copiasegInmu.dat"));
+                ArrayList<Inmueble> inmueblesRecuperados = (ArrayList<Inmueble>) oisInmu.readObject();
+                oisInmu.close();
+                    
+                    
+                for (Inmueble inmu : inmueblesRecuperados) {
+                        System.out.println (inmu);
+                }
             
             
         } catch (IOException ioe) {

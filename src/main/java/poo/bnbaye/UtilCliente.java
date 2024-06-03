@@ -77,7 +77,7 @@ public class UtilCliente implements Serializable {
      * @param vip
      * @return boolean */
     public static boolean modificaParticulares(Particular parti, String dni, String nombre, String tlf, String correo, String clave, String nomT, String numT, LocalDateTime fcT, Boolean vip) {
-        if (parti == null || !particulares.contains(parti)) {
+        if (parti == null || !consultaParticularesPorCorreo(objparti.getCorreo())|| !consultaParticularesPorDni(objparti.getDni())) {
             return false;
         }
         else {
@@ -288,7 +288,9 @@ public class UtilCliente implements Serializable {
                     
                     for (Particular parti : particularesRecuperados) {
                         System.out.println (parti);
+                        particulares.add(parti);
                     }
+                   
                 
                 }catch (Exception e) {
                   System.out.println("Error: " + e.getMessage());
@@ -307,25 +309,22 @@ public class UtilCliente implements Serializable {
     
     
     /** 
-      * Carga el arraylist particular desde el fichero copiasegParti.dat
-      */
+      Carga el arraylist particular desde el fichero copiasegParti.dat*/
     public static void cargarDatosParti() {
-        try (FileInputStream istreamParti = new FileInputStream("copiasegParti.dat");
-            ObjectInputStream oisParti = new ObjectInputStream(istreamParti)) {
-            
-            //Lectura de los objetos de tipo persona
-            
-            particulares = (ArrayList) oisParti.readObject();
-            
-            
-        } catch (IOException ioe) {
-            System.out.println("Error de IO: " + ioe.getMessage());
-        } catch (ClassNotFoundException cnfe) {
-            System.out.println("Error de clase no encontrada: " + cnfe.getMessage());
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }//fin cargarDatos
+      try (FileInputStream istreamParti = new FileInputStream("/Users/eva/Desktop/javabnb_ser/copiasegParti.dat");
+          ObjectInputStream oisParti = new ObjectInputStream(istreamParti)) {
+          
+          //Lectura de los objetos de tipo persona
+          particulares = (ArrayList) oisParti.readObject();
+
+      } catch (IOException ioe) {
+          System.out.println("Error de IO: " + ioe.getMessage());
+      } catch (ClassNotFoundException cnfe) {
+          System.out.println("Error de clase no encontrada: " + cnfe.getMessage());
+      } catch (Exception e) {
+          System.out.println("Error: " + e.getMessage());}}
+//fin cargarDatos
+
     
     
     
@@ -384,7 +383,7 @@ public class UtilCliente implements Serializable {
      * @param calificacion
      * @return boolean */
     public static boolean modificaAnfitriones(Anfitrion anfi, String dni, String nombre, String tlf, String correo, String clave, LocalDateTime fr, int calificacion) {
-        if (anfi == null || !anfitriones.contains(anfi)) {
+        if (anfi == null || !consultaAnfitrionesPorCorreo(objanfi.getCorreo())|| !consultaAnfitrionesPorDni(objanfi.getDni())) {
             return false;
         }
         else {
@@ -569,7 +568,7 @@ public class UtilCliente implements Serializable {
         try {
             
             //Si hay datos los guardamos...
-            if (!particulares.isEmpty()) {
+            if (!anfitriones.isEmpty()) {
                 
                 /****** Serialización de los objetos ******/
                 try {
@@ -577,14 +576,16 @@ public class UtilCliente implements Serializable {
                     oosAnfi.writeObject(anfitriones);
                     oosAnfi.close();
                     
-                   
                     ObjectInputStream oisAnfi = new ObjectInputStream(new FileInputStream ("/Users/eva/Desktop/javabnb_ser/copiasegAnfi.dat"));
                     ArrayList<Anfitrion> anfitrionesRecuperados= (ArrayList<Anfitrion>) oisAnfi.readObject();
                     oisAnfi.close();
                     
                     for (Anfitrion anfi : anfitrionesRecuperados) {
-                        System.out.println (anfi);
+                         System.out.println (anfi);
+                         anfitriones.add(anfi);
                     }
+                   
+                   
                 
                 }catch (Exception e) {
                   System.out.println("Error: " + e.getMessage());
@@ -601,17 +602,17 @@ public class UtilCliente implements Serializable {
         }
     }//fin guardarDatos
     
+    
+    
     /** 
       * Carga el arraylist anfitrion desde el fichero copiasegAnfi.dat
       */
     public static void cargarDatosAnfi() {
-        try {
-            //Lectura de los objetos de tipo persona
-            FileInputStream istreamAnfi = new FileInputStream("copiasegAnfi.dat");
-            ObjectInputStream oisAnfi= new ObjectInputStream(istreamAnfi);
-            
-            anfitriones = (ArrayList) oisAnfi.readObject();
-            
+       try (FileInputStream istreamAnfi = new FileInputStream("/Users/eva/Desktop/javabnb_ser/copiasegAnfi.dat");
+            ObjectInputStream oisAnfi = new ObjectInputStream(istreamAnfi)) {
+          
+          //Lectura de los objetos de tipo persona
+          anfitriones = (ArrayList) oisAnfi.readObject();
             
         } catch (IOException ioe) {
             System.out.println("Error de IO: " + ioe.getMessage());
@@ -620,10 +621,10 @@ public class UtilCliente implements Serializable {
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
-    }//fin cargarDatos
+   }//fin cargarDatos
+
 
     
-
     
     
 }

@@ -5,6 +5,7 @@
 package Interfaces;
 
 import poo.bnbaye.UtilCliente;
+import poo.bnbaye.UtilInmueble;
 
 /**
  *
@@ -32,6 +33,7 @@ public class Run {
                 new AEntradaApp().setVisible(true);
                 UtilCliente.cargarDatosAnfi();
                 UtilCliente.cargarDatosParti();
+                UtilInmueble.cargarDatosInmu();
                         
             }
         });
