@@ -202,6 +202,7 @@ public class UtilInmueble {
         }
     }//fin guardarDatos
     
+    
     /** 
       * Carga el arraylist inmueble desde el fichero copiasegInmu.dat
       */
