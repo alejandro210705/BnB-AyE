@@ -4,6 +4,7 @@
  */
 package Interfaces;
 
+import java.awt.image.BufferedImage;
 import poo.bnbaye.Anfitrion;
 import poo.bnbaye.Inmueble;
 import poo.bnbaye.UtilInmueble;
@@ -128,7 +129,7 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
       
       
       
-     /** Consulta las personas del ArrayList ordenadas para su presentación */
+     /** Consulta los inmuebles del ArrayList ordenadas para su presentación */
     private void consultarTodo() {
         try {
             //referenciamos al ArrayList de UtilCenso
@@ -153,7 +154,7 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
             if (objinmu != null) {
                 Presenta(objinmu);
             } else {
-                JOptionPane.showMessageDialog(this, "No hay personas.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No hay inmuebles.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
@@ -221,6 +222,11 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
         });
 
         jButton2.setText("Modificar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Dar de baja");
 
@@ -319,9 +325,8 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jFormattedTextFieldCalificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jFormattedTextFieldPrecioNoche)
-                                .addComponent(jTextFieldTipoPropiedad, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)))
+                            .addComponent(jFormattedTextFieldPrecioNoche)
+                            .addComponent(jTextFieldTipoPropiedad, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
                         .addGap(244, 244, 244))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -449,6 +454,39 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
         }
     }
     }//GEN-LAST:event_jButtonAnteriorActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    try { 
+        String titulo = jTextFieldTitulo.getText();
+        String calle = jTextFieldCalle.getText();
+        String numero = jTextFieldNumero.getText();
+        String codigoPostal = jTextFieldCodigoPostal.getText();
+        String ciudad = jTextFieldCiudad.getText();
+        String numHuespedes = jTextFieldNumHuespedes.getText();
+        String numHabitaciones = jTextFieldNumHabitaciones.getText();
+        String numCamas = jTextFieldNumCamas.getText();
+        String numBanos = jTextFieldNumBanos.getText();
+        String tipoPropiedad = jTextFieldTipoPropiedad.getText();
+        double precioNoche = Double.parseDouble(jFormattedTextFieldPrecioNoche.getText());
+        double calificacion = Double.parseDouble( jFormattedTextFieldCalificacion.getText());
+        String servicios = jTextFieldServicios.getText();
+        BufferedImage foto = null;
+        
+       
+     
+        objinmu = new Inmueble (titulo, calle, numero, codigoPostal, ciudad, numHuespedes, numHabitaciones, numCamas, numBanos, tipoPropiedad, precioNoche, calificacion, servicios,anfitrion.getCorreo(), foto);
+        
+        if (UtilInmueble.modificaInmuebles(objinmu, titulo, calle, numero, codigoPostal, ciudad, numHuespedes, numHabitaciones, numCamas, numBanos, tipoPropiedad, precioNoche, calificacion, servicios, anfitrion.getCorreo(), foto)) {
+                JOptionPane.showMessageDialog(this, " inmueble dado de alta.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al dar de alta.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+    }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Formato de número incorrecto en algún campo.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

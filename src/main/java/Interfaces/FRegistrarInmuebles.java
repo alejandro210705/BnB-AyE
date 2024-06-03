@@ -417,23 +417,26 @@ public class FRegistrarInmuebles extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
-        try {
-        String titulo = getJTextFieldTitulo();
-        String calle = getJTextFieldCalle();
-        String numero = getJTextFieldNumero();
-        String codigoPostal = getJTextFieldCodigoPostal();
-        String ciudad = getJTextFieldCiudad();
-        String numHuespedes = getJTextFieldNumHuespedes();
-        String numHabitaciones = getJTextFieldNumHabitaciones();
-        String numCamas = getJTextFieldNumCamas();
-        String numBanos = getJTextFieldNumBanos();
-        String tipoPropiedad = getComboBoxTipoPropiedad();
-        double precioNoche = Double.parseDouble(getJFormattedTextFieldPrecioNoche());
-        String servicios = getJTextFieldServicios();
+   try {
+       
+        String titulo = jTextFieldTitulo.getText();
+        String calle = jTextFieldCalle.getText();
+        String numero = jTextFieldNumero.getText();
+        String codigoPostal = jTextFieldCodigoPostal.getText();
+        String ciudad = jTextFieldCiudad.getText();
+        String numHuespedes = jTextFieldNumHuespedes.getText();
+        String numHabitaciones = jTextFieldNumHabitaciones.getText();
+        String numCamas = jTextFieldNumCamas.getText();
+        String numBanos = jTextFieldNumBanos.getText();
+        String tipoPropiedad = (String) jComboBoxTipoPropiedad.getSelectedItem();
+        double precioNoche = Double.parseDouble(jFormattedTextFieldPrecioNoche.getText());
+        String servicios = jTextFieldServicios.getText();
+       
         
 
-        Inmueble inmueble = new Inmueble(titulo, calle, numero, codigoPostal, ciudad, numHuespedes, numHabitaciones, numCamas, numBanos, tipoPropiedad, precioNoche, servicios,anfitrion.getCorreo(), foto);
-        if(UtilInmueble.registrarInmueble(inmueble)){
+       Inmueble objinmu = new Inmueble (titulo, calle, numero, codigoPostal, ciudad, numHuespedes, numHabitaciones, numCamas, numBanos, tipoPropiedad, precioNoche, servicios,anfitrion.getCorreo(), foto);
+        
+        if(UtilInmueble.registrarInmueble(objinmu)){
             JOptionPane.showMessageDialog(this, "Inmueble registrado en la app", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Error al registrar el inmueble en la app", "Mensaje", JOptionPane.ERROR_MESSAGE);

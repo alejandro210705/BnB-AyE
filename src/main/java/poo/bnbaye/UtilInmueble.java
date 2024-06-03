@@ -4,8 +4,10 @@
  */
 package poo.bnbaye;
 
+import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,6 +15,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import poo.bnbaye.Anfitrion;
 import java.util.ArrayList;
@@ -164,6 +167,99 @@ public class UtilInmueble implements Serializable {
     
     
     
+     /** Modifica los datos de un particular
+     /** Modifica los datos de un inmueble
+     * @param inmu
+     * @param titulo
+     * @param calle
+     * @param numero
+     * @param codigoPostal
+     * @param ciudad
+     * @param numHuespedes
+     * @param numHabitaciones
+     * @param numCamas
+     * @param numBanos
+     * @param tipoPropiedad
+     * @param precioNoche
+     * @param calificacion
+     * @param servicios
+     * @param correoAnfitrion
+     * @param foto
+     * @return boolean */
+    public static boolean modificaInmuebles(Inmueble inmu, String titulo,String calle, String numero, String codigoPostal, String ciudad, String numHuespedes, String numHabitaciones, String numCamas, String numBanos, String tipoPropiedad, double precioNoche, double calificacion, String servicios, String correoAnfitrion, BufferedImage foto) {
+        if (inmu == null || !consultaInmueblesPorTitulo(objinmu.getTitulo())|| !consultaInmueblesPorCiudad(objinmu.getCiudad())) {
+            return false;
+        }
+        else {
+        
+            if(!inmu.getTitulo().equals(titulo)){
+            inmu.setTitulo(titulo);
+                return true;
+            }
+            if(!inmu.getCalle().equals(calle)){
+                inmu.setCalle(calle);
+                return true;
+            }
+            if(!inmu.getNumero().equals(numero)){
+                inmu.setNumero(numero);
+                return true;
+            }
+            if(!inmu.getCodigoPostal().equals(codigoPostal)){
+                inmu.setCodigoPostal(codigoPostal);
+                return true;
+            }
+            if(!inmu.getCiudad().equals(ciudad)){
+                inmu.setCiudad(ciudad);
+                return true;
+            }
+            if(!inmu.getNumHuespedes().equals(numHuespedes)){
+                inmu.setNumHuespedes(numHuespedes);
+                return true;
+            }
+            if(!inmu.getNumHabitaciones().equals(numHabitaciones)){
+                inmu.setNumHabitaciones(numHabitaciones);
+                return true;
+            }
+            if(!inmu.getNumCamas().equals(numCamas)){
+                inmu.setNumCamas(numCamas);
+                return true;
+            }
+            if(!inmu.getNumBanos().equals(numBanos)){
+                inmu.setNumBanos(numBanos);
+                return true;
+            }
+            if(!inmu.getTipoPropiedad().equals(tipoPropiedad)){
+                inmu.setTipoPropiedad(tipoPropiedad);
+                return true;
+            }
+            
+            if(!(inmu.getPrecioNoche()==(precioNoche))){
+                inmu.setPrecioNoche(precioNoche);
+                return true;
+            }
+            if(!(inmu.getCalificacion()==(calificacion))){
+                inmu.setCalificacion(calificacion);
+                return true;
+            }
+            if(!inmu.getServicios().equals(servicios)){
+                inmu.setServicios(servicios);
+                return true;
+            }
+            if(!inmu.getCorreoAnfitrion().equals(correoAnfitrion)){
+                inmu.setCorreoAnfitrion(correoAnfitrion);
+                return true;
+            }
+            if(!inmu.getFoto().equals(foto)){
+                inmu.setFoto(foto);
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+    
+    
     /**
      * guardar el arrayList inmueble en copiasegInmu.dat
      */
@@ -214,7 +310,8 @@ public class UtilInmueble implements Serializable {
           //Lectura de los objetos de tipo persona
           inmuebles = (ArrayList) oisInmu.readObject();
             
-            
+        } catch (FileNotFoundException e) {
+            System.out.println("El archivo no existe: " + e.getMessage());    
         } catch (IOException ioe) {
             System.out.println("Error de IO: " + ioe.getMessage());
         } catch (ClassNotFoundException cnfe) {
@@ -223,6 +320,8 @@ public class UtilInmueble implements Serializable {
             System.out.println("Error: " + e.getMessage());
         }
     }//fin cargarDatos
+
+    
     
     
 }
