@@ -79,10 +79,8 @@
                                   <EmptySpace pref="85" max="32767" attributes="0"/>
                                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jPasswordFieldClave" pref="256" max="32767" attributes="0"/>
-                                  <Component id="jTextFieldCorreo" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="jPasswordFieldClave" alignment="0" pref="256" max="32767" attributes="0"/>
+                              <Component id="jTextFieldCorreo" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>

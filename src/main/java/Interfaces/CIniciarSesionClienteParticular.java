@@ -13,6 +13,8 @@ import poo.bnbaye.UtilCliente;
  * @author Alejandro
  */
 public class CIniciarSesionClienteParticular extends javax.swing.JFrame {
+    
+    
 
     /**
      * Creates new form C_IniciarSesionClienteParticular
@@ -205,7 +207,7 @@ public class CIniciarSesionClienteParticular extends javax.swing.JFrame {
 
             Particular particular = UtilCliente.sesionIniciadaParticular(correo, clave);
             if (particular != null){
-                EOperacionesClienteParticular eoperacionesClienteParticular= new EOperacionesClienteParticular();
+                EOperacionesClienteParticular eoperacionesClienteParticular= new EOperacionesClienteParticular(particular);
                 eoperacionesClienteParticular.setVisible(true);
                 this.dispose();
             } else {

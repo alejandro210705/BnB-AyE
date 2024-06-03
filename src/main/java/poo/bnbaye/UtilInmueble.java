@@ -32,6 +32,11 @@ public class UtilInmueble {
         inmuebles = i;
     }
     
+     /**@return Devuelve el ArrayList de particulares */
+    public static ArrayList<Inmueble> getInmuebles() {
+        return inmuebles;
+    }
+    
     /** Da de alta un inmueble
      * @param objinmu
      * @return  boolean */

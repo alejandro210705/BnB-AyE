@@ -4,12 +4,24 @@
  */
 package Interfaces;
 
+import poo.bnbaye.Particular;
 /**
  *
  * @author Alejandro
  */
 public class EOperacionesClienteParticular extends javax.swing.JFrame {
+    private Particular particular;
 
+    
+    /**
+     * Creates new form E_OperacionesClienteParticular
+     * @param particular
+     */
+    public EOperacionesClienteParticular(Particular particular) {
+        this.particular = particular;
+        initComponents();
+    }
+    
     /**
      * Creates new form E_OperacionesClienteParticular
      */
