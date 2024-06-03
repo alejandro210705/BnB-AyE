@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 import poo.bnbaye.Anfitrion;
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.Comparator;
  *
  * @author Alejandro
  */
-public class UtilInmueble {
+public class UtilInmueble implements Serializable {
     
     private static  ArrayList<Inmueble> inmuebles = new ArrayList<>();
     private static  Inmueble objinmu;
