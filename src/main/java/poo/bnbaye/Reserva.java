@@ -18,15 +18,7 @@ public class Reserva {
     private LocalDate FechaEntrada;
     private LocalDate FechaSalida;
     private TarjetaCredito tarjetacredito;
-
-    public Reserva(Particular parti, Inmueble inmu, Anfitrion anfi, LocalDate FechaEntrada, LocalDate FechaSalida, TarjetaCredito tarjetacredito) {
-        this.parti = parti;
-        this.inmu = inmu;
-        this.anfi = anfi;
-        this.FechaEntrada = FechaEntrada;
-        this.FechaSalida = FechaSalida;
-        this.tarjetacredito = tarjetacredito;
-    }
+    
 
     public Reserva(Particular parti, Inmueble inmu, LocalDate FechaEntrada, LocalDate FechaSalida, TarjetaCredito tarjetacredito) {
         this.parti = parti;
@@ -34,6 +26,7 @@ public class Reserva {
         this.FechaEntrada = FechaEntrada;
         this.FechaSalida = FechaSalida;
         this.tarjetacredito = tarjetacredito;
+        
     }
 
     public Reserva(Particular parti, Anfitrion anfi, LocalDate FechaEntrada, LocalDate FechaSalida, TarjetaCredito tarjetacredito) {
@@ -42,7 +35,20 @@ public class Reserva {
         this.FechaEntrada = FechaEntrada;
         this.FechaSalida = FechaSalida;
         this.tarjetacredito = tarjetacredito;
+    
     }
+
+    public Reserva(Particular parti, Inmueble inmu, Anfitrion anfi, LocalDate FechaEntrada, LocalDate FechaSalida, TarjetaCredito tarjetacredito) {
+        this.parti = parti;
+        this.inmu = inmu;
+        this.anfi = anfi;
+        this.FechaEntrada = FechaEntrada;
+        this.FechaSalida = FechaSalida;
+        this.tarjetacredito = tarjetacredito;
+       
+    }
+
+   
 
     
     

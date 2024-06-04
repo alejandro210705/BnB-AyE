@@ -37,8 +37,22 @@ public class UtilReservas {
         return reservasParti;
     }
     
+     public static ArrayList<Reserva> getReservasInmueble(Inmueble inmueble){
+        ArrayList<Reserva> reservasAnfi = new ArrayList<>();
+        for (Reserva res: reservas){
+            if(res.getInmu().getTitulo().equals(inmueble.getTitulo())){
+                reservasAnfi.add(res);
+            }
+        }
+        return reservasAnfi;
+    }
+    
+     
+     
+
+    
    
 
 
-    
+   
 }
