@@ -31,6 +31,7 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
      */
     public FVerModInmueblesAnfitrion(Anfitrion anfitrion) {
         this.anfitrion = anfitrion;
+        
         initComponents();
     }
     
@@ -41,60 +42,116 @@ public class FVerModInmueblesAnfitrion extends javax.swing.JFrame {
         initComponents();
     }
     
-    
-      public void setJTextFieldTitulo(String txt) {
+    /**
+     *
+     * @param txt
+     */
+    public void setJTextFieldTitulo(String txt) {
         this.jTextFieldTitulo.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJTextFieldCalle(String txt) {
         this.jTextFieldCalle.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJTextFieldNumero(String txt) {
         this.jTextFieldNumero.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJTextFieldCodigoPostal(String txt) {
         this.jTextFieldCodigoPostal.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJTextFieldCiudad(String txt) {
         this.jTextFieldCiudad.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJTextFieldNumHuespedes(String txt) {
         this.jTextFieldNumHuespedes.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJTextFieldNumHabitaciones(String txt) {
         this.jTextFieldNumHabitaciones.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJTextFieldNumCamas(String txt) {
         this.jTextFieldNumCamas.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJTextFieldNumBanos(String txt) {
         this.jTextFieldNumBanos.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJTextFieldTipoPropiedad(String txt) {
         this.jTextFieldTipoPropiedad.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJFormattedTextFieldPrecioNoche(String txt) {
         this.jFormattedTextFieldPrecioNoche.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJFormattedTextFieldCalificacion(String txt) {
         this.jFormattedTextFieldCalificacion.setText(txt);
     }
     
+    /**
+     *
+     * @param txt
+     */
     public void setJTextFieldServicios(String txt) {
         this.jTextFieldServicios.setText(txt);
     }
     
-    
+    /**
+     *
+     * @param inmaux
+     * @param anfitrion
+     * @return
+     */
     public static ArrayList<Inmueble> obtenerArrayListAnfitriones (ArrayList<Inmueble> inmaux, Anfitrion anfitrion) {
         ArrayList<Inmueble> InmueblesAnfitrion = new ArrayList<>();
         inmaux = UtilInmueble.getInmuebles();

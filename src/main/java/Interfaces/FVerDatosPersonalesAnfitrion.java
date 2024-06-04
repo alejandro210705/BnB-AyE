@@ -3,21 +3,91 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package Interfaces;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import poo.bnbaye.Anfitrion;
+import poo.bnbaye.UtilCliente;
 /**
  *
  * @author Alejandro
  */
 public class FVerDatosPersonalesAnfitrion extends javax.swing.JFrame {
+    private ArrayList <Anfitrion> anfitriones;
+    private Anfitrion anfitrion;
+    
+    
      
    
     /**
      * Creates new form F_VerDatosPersonalesAnfitrion
      */
     public FVerDatosPersonalesAnfitrion() { 
+        this.anfitrion = anfitrion;
         initComponents();
     }
 
+    /**
+     *
+     * @param jFormattedTextFieldFr
+     */
+    public void setjFormattedTextFieldFr(JFormattedTextField jFormattedTextFieldFr) {
+        this.jFormattedTextFieldFr = jFormattedTextFieldFr;
+    }
+
+    /**
+     *
+     * @param jFormattedTextFieldTlf
+     */
+    public void setjFormattedTextFieldTlf(JFormattedTextField jFormattedTextFieldTlf) {
+        this.jFormattedTextFieldTlf = jFormattedTextFieldTlf;
+    }
+
+    /**
+     *
+     * @param jPasswordFieldClave
+     */
+    public void setjPasswordFieldClave(JPasswordField jPasswordFieldClave) {
+        this.jPasswordFieldClave = jPasswordFieldClave;
+    }
+
+    /**
+     *
+     * @param jTextFieldCorreo
+     */
+    public void setjTextFieldCorreo(JTextField jTextFieldCorreo) {
+        this.jTextFieldCorreo = jTextFieldCorreo;
+    }
+
+    /**
+     *
+     * @param jTextFieldDni
+     */
+    public void setjTextFieldDni(JTextField jTextFieldDni) {
+        this.jTextFieldDni = jTextFieldDni;
+    }
+
+    /**
+     *
+     * @param jTextFieldNombre
+     */
+    public void setjTextFieldNombre(JTextField jTextFieldNombre) {
+        this.jTextFieldNombre = jTextFieldNombre;
+    }
+
+    
+    private void MuestraDatosAnfi(Anfitrion anfi){
+        setJTextFieldCorreo(anfi.getCorreo());
+        setJTextFieldClave(anfi.getClave());
+        setJTextFieldDni(anfi.getDni());
+        setJTextFieldNombre(anfi.getNombre());
+        setJTextFieldTlf(anfi.getTlf());
+        setJFormattedTextFieldFr(String.valueOf(anfi.getFr()));
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,8 +160,18 @@ public class FVerDatosPersonalesAnfitrion extends javax.swing.JFrame {
         jLabel7.setText("MODIFICAR DATOS PERSONALES ANFITRIÓN");
 
         jButton1.setText("Modificar datos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Guardar cambios ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Volver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -187,6 +267,43 @@ public class FVerDatosPersonalesAnfitrion extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    try {
+            String dni = jTextFieldDni.getText();
+            String nombre = jTextFieldNombre.getText();
+            String tlf = jFormattedTextFieldTlf.getText();
+            String correo = jTextFieldCorreo.getText();
+            String clave = jPasswordFieldClave.getText();
+            LocalDateTime fr = LocalDateTime.now();
+            
+            anfitrion = new Anfitrion (dni, nombre, tlf, correo, clave,  fr, 0);
+
+
+            //Para validar los campos
+            if (dni.isEmpty() || nombre.isEmpty() || correo.isEmpty() || clave.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos obligatorios.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+            } else {
+                
+            //se inserta en el array
+            if (UtilCliente.modificaAnfitriones(anfitrion, dni, nombre, tlf, correo, clave,  fr, 0)) {
+                JOptionPane.showMessageDialog(this, "Cliente dado de alta.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al dar de alta.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+            }
+
+           
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Formato de número incorrecto en algún campo.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    UtilCliente.guardarDatosAnfi();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -244,4 +361,28 @@ public class FVerDatosPersonalesAnfitrion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldDni;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void setJTextFieldCorreo(String correo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJTextFieldClave(String clave) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJTextFieldDni(String dni) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJTextFieldNombre(String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJTextFieldTlf(String tlf) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJFormattedTextFieldFr(String valueOf) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

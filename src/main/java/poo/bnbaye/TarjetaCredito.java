@@ -12,10 +12,19 @@ import java.time.LocalDate;
  */
 public class TarjetaCredito {
     
+    /**
+     *
+     */
     public String nomT;
     
+    /**
+     *
+     */
     public String numT;
     
+    /**
+     *
+     */
     public LocalDate fc;
 
     //constructor 

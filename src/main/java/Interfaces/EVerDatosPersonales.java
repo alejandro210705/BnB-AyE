@@ -4,18 +4,109 @@
  */
 package Interfaces;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import poo.bnbaye.Particular;
+import poo.bnbaye.UtilCliente;
 /**
  *
  * @author Alejandro
  */
 public class EVerDatosPersonales extends javax.swing.JFrame {
+    
+    private ArrayList <Particular> particulares;
+    private Particular particular;
 
     /**
      * Creates new form E_VerDatosPersonales
      */
     public EVerDatosPersonales() {
+        
         initComponents();
     }
+
+    /**
+     *
+     * @param jFormattedTextFieldFc
+     */
+    public void setjFormattedTextFieldFc(JFormattedTextField jFormattedTextFieldFc) {
+        this.jFormattedTextFieldFc = jFormattedTextFieldFc;
+    }
+
+    /**
+     *
+     * @param jPasswordFieldClave
+     */
+    public void setjPasswordFieldClave(JPasswordField jPasswordFieldClave) {
+        this.jPasswordFieldClave = jPasswordFieldClave;
+    }
+
+    /**
+     *
+     * @param jTextFieldCorreo
+     */
+    public void setjTextFieldCorreo(JTextField jTextFieldCorreo) {
+        this.jTextFieldCorreo = jTextFieldCorreo;
+    }
+
+    /**
+     *
+     * @param jTextFieldDni
+     */
+    public void setjTextFieldDni(JTextField jTextFieldDni) {
+        this.jTextFieldDni = jTextFieldDni;
+    }
+
+    /**
+     *
+     * @param jTextFieldNomT
+     */
+    public void setjTextFieldNomT(JTextField jTextFieldNomT) {
+        this.jTextFieldNomT = jTextFieldNomT;
+    }
+
+    /**
+     *
+     * @param jTextFieldNombre
+     */
+    public void setjTextFieldNombre(JTextField jTextFieldNombre) {
+        this.jTextFieldNombre = jTextFieldNombre;
+    }
+
+    /**
+     *
+     * @param jTextFieldNumT
+     */
+    public void setjTextFieldNumT(JTextField jTextFieldNumT) {
+        this.jTextFieldNumT = jTextFieldNumT;
+    }
+
+    /**
+     *
+     * @param jTextFieldTlf
+     */
+    public void setjTextFieldTlf(JTextField jTextFieldTlf) {
+        this.jTextFieldTlf = jTextFieldTlf;
+    }
+    
+    
+    
+    private void MuestraDatosParti(Particular parti){
+        setJTextFieldCorreo(parti.getCorreo());
+        setJTextFieldClave(parti.getClave());
+        setJTextFieldDni(parti.getDni());
+        setJTextFieldNombre(parti.getNombre());
+        setJTextFieldTlf(parti.getTlf());
+        setJTextFieldNomT(parti.getNomT());
+        setJTextFieldNumT(parti.getNumT());
+        setJFormattedTextFieldFcT(String.valueOf(parti.getFcT()));
+        
+    }
+      
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,8 +138,8 @@ public class EVerDatosPersonales extends javax.swing.JFrame {
         jTextFieldCorreo = new javax.swing.JTextField();
         jTextFieldNumT = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jLabel9.setText("jLabel9");
 
@@ -107,26 +198,36 @@ public class EVerDatosPersonales extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Avenir", 2, 18)); // NOI18N
         jLabel10.setText("MODIFICAR DATOS PERSONALES CLIENTES PARTICULARES");
 
-        jTextField1.setText("Guardar datos");
+        jButton2.setText("Modificar datos");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jTextField2.setText("Modificar datos");
+        jButton3.setText("Guardar datos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(133, Short.MAX_VALUE)
+                .addContainerGap(172, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addGap(118, 118, 118))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(195, 195, 195)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(159, 159, 159)
+                .addComponent(jButton2)
+                .addGap(91, 91, 91)
+                .addComponent(jButton3)
+                .addGap(85, 85, 85)
                 .addComponent(jButton1)
-                .addGap(74, 74, 74))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(200, 200, 200)
@@ -148,12 +249,12 @@ public class EVerDatosPersonales extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 396, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 397, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(42, 42, 42))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(104, 104, 104)
@@ -192,15 +293,55 @@ public class EVerDatosPersonales extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    EOperacionesClienteParticular eoperaciones = new EOperacionesClienteParticular();
-    eoperaciones.setVisible(true);
-    this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jTextFieldTlfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTlfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTlfActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        EOperacionesClienteParticular eoperaciones = new EOperacionesClienteParticular();
+        eoperaciones.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    try {
+            String dni = jTextFieldDni.getText();
+            String nombre = jTextFieldNombre.getText();
+            String tlf = jTextFieldTlf.getText();
+            String correo = jTextFieldCorreo.getText();
+            String clave = jPasswordFieldClave.getText();
+            String nomT = jTextFieldNomT.getText();
+            String numT = jTextFieldNumT.getText();
+            LocalDateTime fcT = LocalDateTime.now();
+            
+            particular = new Particular (dni, nombre, tlf, correo, clave, nomT, numT, fcT, true);
+
+
+            //Para validar los campos
+            if (dni.isEmpty() || nombre.isEmpty() || correo.isEmpty() || clave.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, complete todos los campos obligatorios.", "Mensaje", JOptionPane.WARNING_MESSAGE);
+                
+            } else {     //se inserta en el array
+            if(UtilCliente.modificaParticulares(particular, dni, nombre, tlf, correo, clave,  nomT,  numT,  fcT, true)) {
+                JOptionPane.showMessageDialog(this, "Cliente dado de alta.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } 
+            else {
+                JOptionPane.showMessageDialog(this, "Error al dar de alta.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+             
+            }
+
+           
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Formato de número incorrecto en algún campo.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    UtilCliente.guardarDatosParti();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,6 +381,8 @@ public class EVerDatosPersonales extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JFormattedTextField jFormattedTextFieldFc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -254,8 +397,6 @@ public class EVerDatosPersonales extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordFieldClave;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextFieldCorreo;
     private javax.swing.JTextField jTextFieldDni;
     private javax.swing.JTextField jTextFieldNomT;
@@ -263,4 +404,36 @@ public class EVerDatosPersonales extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNumT;
     private javax.swing.JTextField jTextFieldTlf;
     // End of variables declaration//GEN-END:variables
+
+    private void setJTextFieldCorreo(String correo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJTextFieldClave(String clave) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJTextFieldDni(String dni) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJTextFieldNombre(String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJTextFieldTlf(String tlf) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJTextFieldNomT(String nomT) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJTextFieldNumT(String numT) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setJFormattedTextFieldFcT(String valueOf) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

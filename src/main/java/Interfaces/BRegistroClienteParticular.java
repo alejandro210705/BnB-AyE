@@ -102,7 +102,7 @@ public class BRegistroClienteParticular extends javax.swing.JFrame {
 
     /**
      *
-     * @param telefono
+     * @param txt
      */
     public void setJFormattedTextFieldTlf(String txt) {
         this.jFormattedTextFieldTlf.setText(txt);

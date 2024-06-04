@@ -214,8 +214,12 @@ public class UtilCliente implements Serializable {
         return objparti;
     }
     
-    
-    
+    /**
+     *
+     * @param correo
+     * @param clave
+     * @return
+     */
     public static Particular sesionIniciadaParticular (String correo, String clave) {
         particulares = UtilCliente.getParticulares();
         for (int i = 0; i < particulares.size(); i++) {
@@ -383,7 +387,7 @@ public class UtilCliente implements Serializable {
      * @param calificacion
      * @return boolean */
     public static boolean modificaAnfitriones(Anfitrion anfi, String dni, String nombre, String tlf, String correo, String clave, LocalDateTime fr, int calificacion) {
-        if (anfi == null || !consultaAnfitrionesPorCorreo(objanfi.getCorreo())|| !consultaAnfitrionesPorDni(objanfi.getDni())) {
+        if (!consultaAnfitrionesPorCorreo(objanfi.getCorreo())|| !consultaAnfitrionesPorDni(objanfi.getDni())) {
             return false;
         }
         else {
@@ -515,6 +519,12 @@ public class UtilCliente implements Serializable {
         return objanfi;
     }
     
+    /**
+     *
+     * @param correo
+     * @param clave
+     * @return
+     */
     public static Anfitrion sesionIniciadaAnfitrion (String correo, String clave) {
         anfitriones = UtilCliente.getAnfitriones();
         for (int i = 0; i < anfitriones.size(); i++) {

@@ -14,11 +14,24 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
     
+    /**
+     *
+     */
     public String correo;
+
+    /**
+     *
+     */
     public String clave;
     
-    
+    /**
+     *
+     */
     public static final String ADMIN_CORREO = "admin@javabnb.com";
+
+    /**
+     *
+     */
     public static final String ADMIN_CLAVE = "admin";
     
 
@@ -33,22 +46,41 @@ public class Usuario implements Serializable {
         this.clave = clave;
     }
     
+    /**
+     *
+     */
     public Usuario(){
         
     }
 
+    /**
+     *
+     * @return
+     */
     public String getCorreo() {
         return correo;
     }
 
+    /**
+     *
+     * @param correo
+     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getClave() {
         return clave;
     }
 
+    /**
+     *
+     * @param clave
+     */
     public void setClave(String clave) {
         this.clave = clave;
     }

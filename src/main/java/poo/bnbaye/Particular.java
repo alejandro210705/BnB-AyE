@@ -15,14 +15,29 @@ import java.time.LocalDateTime;
  */
 public class Particular extends Cliente implements Serializable {
     
+    /**
+     *
+     */
     public String nomT; //nombre titular de la tarjeta 
     
+    /**
+     *
+     */
     public String numT; //numero de la tarjeta 
     
+    /**
+     *
+     */
     public LocalDateTime fcT; //fecha de caducidad de la tarjeta 
     
+    /**
+     *
+     */
     public boolean vip; //si el cliente particular es vip o no ç
     
+    /**
+     *
+     */
     public TarjetaCredito tarjetacredito;
 
     
@@ -48,6 +63,19 @@ public class Particular extends Cliente implements Serializable {
         this.vip = vip;
     }
 
+    /**
+     *
+     * @param nomT
+     * @param numT
+     * @param fcT
+     * @param vip
+     * @param tarjetacredito
+     * @param dni
+     * @param nombre
+     * @param tlf
+     * @param correo
+     * @param clave
+     */
     public Particular(String nomT, String numT, LocalDateTime fcT, boolean vip, TarjetaCredito tarjetacredito, String dni, String nombre, String tlf, String correo, String clave) {
         super(dni, nombre, tlf, correo, clave);
         this.nomT = nomT;
@@ -149,10 +177,18 @@ public class Particular extends Cliente implements Serializable {
         this.nomT = nomT;
     }
 
+    /**
+     *
+     * @return
+     */
     public TarjetaCredito getTarjetacredito() {
         return tarjetacredito;
     }
 
+    /**
+     *
+     * @param tarjetacredito
+     */
     public void setTarjetacredito(TarjetaCredito tarjetacredito) {
         this.tarjetacredito = tarjetacredito;
     }

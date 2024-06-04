@@ -13,12 +13,32 @@ import java.io.Serializable;
  */
 public class Cliente extends Usuario implements Serializable {
     
+    /**
+     *
+     */
     public String dni;
+
+    /**
+     *
+     */
     public String nombre;
+
+    /**
+     *
+     */
     public String tlf;
 
     
     //constructor 
+
+    /**
+     *
+     * @param dni
+     * @param nombre
+     * @param tlf
+     * @param correo
+     * @param clave
+     */
 
     public Cliente(String dni, String nombre, String tlf, String correo, String clave) {
         super(correo, clave);
@@ -27,6 +47,9 @@ public class Cliente extends Usuario implements Serializable {
         this.tlf= tlf;
     }
     
+    /**
+     *
+     */
     public Cliente () {
         
     }
