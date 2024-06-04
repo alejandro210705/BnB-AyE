@@ -21,7 +21,9 @@ public class Particular extends Cliente implements Serializable {
     
     public LocalDateTime fcT; //fecha de caducidad de la tarjeta 
     
-    public boolean vip; //si el cliente particular es vip o no 
+    public boolean vip; //si el cliente particular es vip o no ç
+    
+    public TarjetaCredito tarjetacredito;
 
     
     
@@ -45,6 +47,19 @@ public class Particular extends Cliente implements Serializable {
         this.fcT = fcT;
         this.vip = vip;
     }
+
+    public Particular(String nomT, String numT, LocalDateTime fcT, boolean vip, TarjetaCredito tarjetacredito, String dni, String nombre, String tlf, String correo, String clave) {
+        super(dni, nombre, tlf, correo, clave);
+        this.nomT = nomT;
+        this.numT = numT;
+        this.fcT = fcT;
+        this.vip = vip;
+        this.tarjetacredito = tarjetacredito;
+    }
+    
+    
+    
+    
     
     /**
      *
@@ -133,6 +148,16 @@ public class Particular extends Cliente implements Serializable {
     public void setNomT(String nomT) {
         this.nomT = nomT;
     }
+
+    public TarjetaCredito getTarjetacredito() {
+        return tarjetacredito;
+    }
+
+    public void setTarjetacredito(TarjetaCredito tarjetacredito) {
+        this.tarjetacredito = tarjetacredito;
+    }
+    
+    
 
     
     /**
